@@ -12,11 +12,11 @@ public class Cyclemin {
         }
         return res.toString();
     }
-	
-	public String bestmod(String s, int k) {
+
+    public String bestmod(String s, int k) {
         StringBuilder cur = new StringBuilder(s);
         String minStr = s;
-		for (int i = 0; i < s.length(); i++) {
+        for (int i = 0; i < s.length(); i++) {
             cur.append(cur.charAt(0));
             cur.deleteCharAt(0);
             String curRes = insertAs(cur.toString(), k);
@@ -25,6 +25,6 @@ public class Cyclemin {
                 minStr = curRes;
         }
 
-		return minStr;
-	}
+        return minStr;
+    }
 }
