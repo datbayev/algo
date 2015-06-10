@@ -1,0 +1,48 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td>There is a robot on the moon.
+You are given a String[] <b>board</b> containing the map of a rectangular area.
+The robot is currently located somewhere in that area.
+In the map, the character '.' (period) represents an empty square, 'S' represents an empty square that currently contains the robot, and '#' represents an obstacle.
+<br></br>
+<br></br>
+You are also given a String <b>S</b>.
+This String represents a sequence of commands we are going to send to the robot.
+Each character in <b>S</b> is one of 'U', 'D', 'L', and 'R', representing a step up, down, left, and right, respectively.
+<br></br>
+<br></br>
+Whenever the robot receives a command, one of three things will happen:
+<ul>
+<li>If the requested move leads to an empty square, the robot performs the move.</li>
+<li>If the requested move leads to a square with an obstacle, the robot ignores the command and remains in place.</li>
+<li>If the requested move leads out of the mapped area, the robot leaves the mapped area and dies immediately.</li>
+</ul>
+<br></br>
+<br></br>
+Given the map and the sequence of commands, compute whether the robot will survive.
+Return "Alive" (quotes for clarity) if the robot is still somewhere on the map after the last command.
+Otherwise, return "Dead".
+Note that the return value is case-sensitive.</td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>RobotOnMoonEasy</td></tr><tr><td>Method:</td><td>isSafeCommand</td></tr><tr><td>Parameters:</td><td>String[], String</td></tr><tr><td>Returns:</td><td>String</td></tr><tr><td>Method signature:</td><td>String isSafeCommand(String[] board, String S)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td colspan="2"><h3>Limits</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Time limit (s):</td><td>2.000</td></tr><tr><td>Memory limit (MB):</td><td>256</td></tr><tr><td>Stack limit (MB):</td><td>256</td></tr></table></td></tr><tr><td colspan="2"><h3>Notes</h3></td></tr><tr><td align="center" valign="top">-</td><td>The direction 'U' corresponds to moving from <b>board</b>[i][j] to <b>board</b>[i-1][j]. The direction 'L' corresponds to moving from <b>board</b>[i][j] to <b>board</b>[i][j-1].</td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>board</b> will contain between 1 and 50 elements, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>board</b> will contain between 1 and 50 characters.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>board</b> will contain the same number of characters.</td></tr><tr><td align="center" valign="top">-</td><td>The characters in <b>board</b> will be '.', '#' or 'S'.</td></tr><tr><td align="center" valign="top">-</td><td>There will be exactly one 'S' in <b>board</b>.</td></tr><tr><td align="center" valign="top">-</td><td><b>S</b> will contain between 1 and 50 characters, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each character in <b>S</b> will be one of 'U', 'D', 'L', 'R'.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;.....&quot;,
+ &quot;.###.&quot;,
+ &quot;..S#.&quot;,
+ &quot;...#.&quot;}</pre></td></tr><tr><td><pre>&quot;URURURURUR&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;Alive&quot;</pre></td></tr><tr><td><table><tr><td colspan="2">The robot will never move from its starting location: commands 'U' and 'R' are sending it into obstacles, so the robot ignores them.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;.....&quot;,
+ &quot;.###.&quot;,
+ &quot;..S..&quot;,
+ &quot;...#.&quot;}</pre></td></tr><tr><td><pre>&quot;URURURURUR&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;Dead&quot;</pre></td></tr><tr><td><table><tr><td colspan="2">This time there is no obstacle on the robot's right side. Its execution of commands will look as follows:
+<ol>
+<li>'U' leads into an obstacle. The robot ignores it.</li>
+<li>'R' leads into an empty square. The robot makes a step to the right.</li>
+<li>'U' leads into an obstacle. The robot ignores it.</li>
+<li>'R' leads into an empty square. The robot makes a step to the right.</li>
+<li>The next 'U' now leads into an empty square. The robot makes a step up. After this step, the robot is in row 1, column 4. (Both indices are 0-based.)</li>
+<li>'R' leads out of the map. The robot steps out of the map and dies. The remaining four commands never get executed - the robot is already dead.</li>
+</ol></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;.....&quot;,
+ &quot;.###.&quot;,
+ &quot;..S..&quot;,
+ &quot;...#.&quot;}</pre></td></tr><tr><td><pre>&quot;URURU&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;Alive&quot;</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;#####&quot;,
+ &quot;#...#&quot;,
+ &quot;#.S.#&quot;,
+ &quot;#...#&quot;,
+ &quot;#####&quot;}</pre></td></tr><tr><td><pre>&quot;DRULURLDRULRUDLRULDLRULDRLURLUUUURRRRDDLLDD&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;Alive&quot;</pre></td></tr><tr><td><table><tr><td colspan="2">There are obstacles all around the map. Regardless of how the robot moves, it is safe - the obstacles will prevent it from leaving the map.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;#####&quot;,
+ &quot;#...#&quot;,
+ &quot;#.S.#&quot;,
+ &quot;#...#&quot;,
+ &quot;#.###&quot;}</pre></td></tr><tr><td><pre>&quot;DRULURLDRULRUDLRULDLRULDRLURLUUUURRRRDDLLDD&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;Dead&quot;</pre></td></tr><tr><td><table><tr><td colspan="2">After some steps the robot will leave the map from the only empty square in the bottom row of the map.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">5)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{&quot;S&quot;}</pre></td></tr><tr><td><pre>&quot;R&quot;</pre></td></tr></table></td></tr><tr><td><pre>Returns: &quot;Dead&quot;</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>
