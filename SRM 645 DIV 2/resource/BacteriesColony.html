@@ -1,0 +1,33 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><p>Grazyna works in a laboratory.
+Her team is about to perform an experiment with special bacteria.
+</p>
+<p>
+There is a row of vessels.
+Each vessel contains a colony of bacteria.
+The colonies may currently have different sizes.
+Namely, for each valid i there are currently <b>colonies</b>[i] bacteria in the i-th vessel (0-based index).
+</p>
+<p>
+Grazyna has a theory about how the colony sizes change.
+According to the theory, the colony sizes only change during nights and it only happens in two specific cases:
+<ul>
+<li>If during a day a colony finds itself immediately between two larger colonies, during the next night its size will increase by 1.</li>
+<li>If during a day a colony finds itself immediately between two smaller colonies, during the next night its size will decrease by 1.</li>
+</ul>
+Note that the colonies in the first and last vessel never change their sizes as they are never between two colonies.
+Also note that multiple colonies can change their size each night.
+</p>
+<p>
+The experiment will go on for as long as some colonies keep changing their sizes.
+You are given the int[] <b>colonies</b>.
+Compute the result of the experiment, assuming that the colony sizes change according to Grazyna's theory.
+Return a int[] with the same number of elements as <b>colonies</b>.
+For each valid i, element i of the return value should be the final size of the colony in the i-th vessel.
+</p></td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>BacteriesColony</td></tr><tr><td>Method:</td><td>performTheExperiment</td></tr><tr><td>Parameters:</td><td>int[]</td></tr><tr><td>Returns:</td><td>int[]</td></tr><tr><td>Method signature:</td><td>int[] performTheExperiment(int[] colonies)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td colspan="2"><h3>Limits</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Time limit (s):</td><td>2.000</td></tr><tr><td>Memory limit (MB):</td><td>256</td></tr><tr><td>Stack limit (MB):</td><td>256</td></tr></table></td></tr><tr><td colspan="2"><h3>Notes</h3></td></tr><tr><td align="center" valign="top">-</td><td>For each valid input the experiment will terminate after finitely many steps.</td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>colonies</b> will have between 3 and 50 elements, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>colonies</b> will be between 1 and 100, inclusive.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{5, 3, 4, 6, 1 }</pre></td></tr></table></td></tr><tr><td><pre>Returns: {5, 4, 4, 4, 1 }</pre></td></tr><tr><td><table><tr><td colspan="2"><ul>
+<li>The colony sizes during the first day are given as input: {5, 3, 4, 6, 1}.</li>
+<li>During the first night colony 1 (0-based index) will grow and colony 3 will shrink.</li>
+<li>During the second day the colony sizes will be {5, 4, 4, 5, 1}.</li>
+<li>During the second night colony 3 will shrink again.</li>
+<li>During the third day the colony sizes will be {5, 4, 4, 4, 1}.</li>
+<li>There are no more changes during the third night, so that is the final state and the experiment ends.</li>
+</ul></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{1, 5, 4, 9 }</pre></td></tr></table></td></tr><tr><td><pre>Returns: {1, 4, 5, 9 }</pre></td></tr><tr><td><table><tr><td colspan="2">During the first night colony 1 will shrink from 5 to 4 and at the same time colony 2 will grow from 4 to 5. Afterwards there will be no more changes.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{78, 34, 3, 54, 44, 99 }</pre></td></tr></table></td></tr><tr><td><pre>Returns: {78, 34, 34, 49, 49, 99 }</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{32, 68, 50, 89, 34, 56, 47, 30, 82, 7, 21, 16, 82, 24, 91 }</pre></td></tr></table></td></tr><tr><td><pre>Returns: {32, 59, 59, 59, 47, 47, 47, 47, 47, 18, 18, 19, 53, 53, 91 }</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>
