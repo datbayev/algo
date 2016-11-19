@@ -18,7 +18,7 @@ public class FallingSand {
             "oooox.o.",
             "..x....."
         };
-        
+
         String[] res = simulate(board);
         for (int i = 0; i < res.length; i++)
             out.println(res[i]);
@@ -44,7 +44,7 @@ public class FallingSand {
                     continue;
 
                 int k = i + 1;
-                while (k < n && res[k][j] == '.') // move down until possible
+                while (k < n && res[k][j] == '.') // move down while possible
                     k++;
 
                 if (k - i > 1) { // moved at least to one point down
