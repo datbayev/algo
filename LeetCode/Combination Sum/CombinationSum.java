@@ -1,7 +1,7 @@
 import java.io.PrintWriter;
 import java.util.*;
 
-public class Solution {
+public class CombinationSum {
 
     int[] candidates;
     List<List<Integer>> result;
@@ -49,6 +49,6 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-	    new Solution().solve();
+	    new CombinationSum().solve();
     }
 }
