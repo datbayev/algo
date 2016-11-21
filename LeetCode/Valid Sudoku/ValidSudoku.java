@@ -1,10 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-/**
- * Created by megido
- */
-public class Solution {
+public class ValidSudoku {
     public boolean isValidSudoku(char[][] board) {
         for (int i = 0; i < board.length; i++) {
             Set<Character> rowSet = new HashSet<Character>();
@@ -58,6 +55,6 @@ public class Solution {
     }
 
     public static void main(String args[]) {
-        new Solution().solve();
+        new ValidSudoku().solve();
     }
 }
