@@ -1,10 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-/**
- * Created by megido
- */
-public class Solution {
+public class TwoSum {
     public int[] twoSum(int[] nums, int target) {
         int[] res = new int[2];
         Map<Integer, List<Integer>> map = new HashMap<Integer, List<Integer>>();
@@ -58,6 +55,6 @@ public class Solution {
     }
 
     public static void main(String args[]) {
-        new Solution().solve();
+        new TwoSum().solve();
     }
 }
