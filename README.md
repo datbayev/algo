@@ -1,5 +1,5 @@
-# topcoder
+# Algorithms and Data structures
 
-My solutions for TopCoder SRMs.
+This repository is aimed to collect implementations of some of the popular algorithms and data structures.
 
-Feel free to grab if you find something useful or interesting.
+If you find something useful or interesting please feel free to grab, or give me feedback via email: gmegido@gmail.com
