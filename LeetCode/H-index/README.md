@@ -10,4 +10,4 @@ For example, given citations = [3, 0, 6, 1, 5], which means the researcher has 5
 
 Note: If there are several possible values for h, the maximum one is taken as the h-index.
 
-[Solution](LeetCode/H-index/HIndex.java)
+[Solution](HIndex.java)
