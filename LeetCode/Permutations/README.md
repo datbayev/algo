@@ -17,3 +17,5 @@ For example,
   [3,2,1]
 ]
 ```
+
+[Solution](Permutations.java)
