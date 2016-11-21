@@ -1,7 +1,12 @@
 import java.io.PrintWriter;
 import java.util.Scanner;
 
+/*
+    SRM 661, DIV 2, 250-problem
+ */
+
 public class FallingSand {
+
     public static void main(String[] args) {
         new FallingSand().solve();
     }
