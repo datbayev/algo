@@ -3,6 +3,5 @@
 *.class
 out
 
-SRM 651 DIV 2/.idea/.name
-
 */resource/
+*.idea/
