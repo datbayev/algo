@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Solution {
+public class MergeIntervals {
 
     public class Interval {
         int start;
