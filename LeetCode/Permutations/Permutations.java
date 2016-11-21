@@ -1,7 +1,7 @@
 import java.io.PrintWriter;
 import java.util.*;
 
-public class Solution {
+public class Permutations {
     List<List<Integer>> result;
     int[] nums;
 
@@ -49,6 +49,6 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-	    new Solution().solve();
+	    new Permutations().solve();
     }
 }
