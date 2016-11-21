@@ -1,7 +1,7 @@
 import java.io.PrintWriter;
 import java.util.*;
 
-public class Solution {
+public class HIndex {
     public int hIndex2(int[] citations) { // using Binary search
         if (citations.length == 0)
             return 0;
@@ -30,7 +30,7 @@ public class Solution {
         return n - r;
     }
 
-    public int hIndex(int[] citations) { // O(n) solution
+    public int hIndex(int[] citations) { // O(n) HIndex
         Arrays.sort(citations);
 
         if (citations.length == 0)
@@ -66,6 +66,6 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        new Solution().solve();
+        new HIndex().solve();
     }
 }
