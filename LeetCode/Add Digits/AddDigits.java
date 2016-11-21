@@ -1,7 +1,7 @@
 import java.io.PrintWriter;
 import java.util.*;
 
-public class Solution {
+public class AddDigits {
 
     public int addDigits(int num) {
         while (num > 9) {
@@ -26,6 +26,6 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-	    new Solution().solve();
+	    new AddDigits().solve();
     }
 }
