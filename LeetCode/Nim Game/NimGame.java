@@ -1,7 +1,7 @@
 import java.io.PrintWriter;
 import java.util.*;
 
-public class Solution {
+public class NimGame {
 
     public boolean canWinNim(int n) {
         return n % 4 > 0;
@@ -17,6 +17,6 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-	    new Solution().solve();
+	    new NimGame().solve();
     }
 }
