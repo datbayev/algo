@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Solution {
+public class RemoveDuplicatesSortedListII {
     public class ListNode {
         int val;
         ListNode next;
@@ -77,6 +77,6 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        new Solution().solve();
+        new RemoveDuplicatesSortedListII().solve();
     }
 }
