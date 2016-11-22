@@ -1,4 +1,4 @@
-public class Solution {
+public class UglyNumberII {
     public int nthUglyNumber(int n) {
         int[] k = new int[n];
         k[0] = 1;
@@ -18,7 +18,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution s = new Solution();
+        UglyNumberII s = new UglyNumberII();
         System.out.println(s.nthUglyNumber(1352));
     }
 }
