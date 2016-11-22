@@ -11,3 +11,5 @@ The longest increasing subsequence is ```[2, 3, 7, 101]```, therefore the length
 Your algorithm should run in ```O(n^2)``` complexity.
 
 Follow up: Could you improve it to O(n log n) time complexity?
+
+[Solution](LongestIncreasingSubsequence.java)
