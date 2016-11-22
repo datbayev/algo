@@ -1,6 +1,6 @@
 import java.io.PrintWriter;
 
-public class Solution {
+public class PerfectSquares {
     public int numSquares(int n) {
         int[] dp = new int[n + 1];
         dp[0] = 0;
@@ -15,7 +15,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        new Solution().solve();
+        new PerfectSquares().solve();
     }
 
     public void solve() {
