@@ -1,9 +1,13 @@
 import java.io.PrintWriter;
 import java.util.*;
 
-public class Solution {
-    public static List<Integer> getMaxIncSubseq(int[] a) {
+public class LongestIncreasingSubsequence {
+    public int lengthOfLIS(int[] a) {
         int n = a.length;
+
+        if (n == 0)
+            return 0;
+
         int[] d = new int[n];
         int[] p = new int[n];
         List<Integer> path = new ArrayList<Integer>();
@@ -36,15 +40,6 @@ public class Solution {
             position = p[position];
         }
 
-        return path;
-    }
-
-    public static void main(String[] args) {
-        PrintWriter out = new PrintWriter(System.out);
-        int[] a = {1, 2, 5, 4, 2, 6, 8, 7};
-        List<Integer> res = getMaxIncSubseq(a);
-        for (int i = res.size() - 1; i >= 0; i--)
-            out.print(a[res.get(i)] + " ");
-        out.close();
+        return path.size();
     }
 }
