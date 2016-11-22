@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Solution {
+public class Integer2EnglishWords {
     Map<Integer, String> nums;
 
     public String simple(int num) {
@@ -102,14 +102,14 @@ public class Solution {
     }
 
     public void solve() {
-        int num = 0;
-//        int num = 123;
-//        int num = 2113435394;
+        //int num = 0;
+        //int num = 2113435394;
+        int num = 123;
         String res = numberToWords(num);
         System.out.println(res);
     }
 
     public static void main(String[] args) {
-        new Solution().solve();
+        new Integer2EnglishWords().solve();
     }
 }
