@@ -1,4 +1,4 @@
-public class Solution {
+public class MissingNumber {
     public int missingNumber(int[] nums) {
         boolean zeroExists = false;
         int n = nums.length;
@@ -18,13 +18,13 @@ public class Solution {
 
     public void solve() {
         int[] nums = {0, 1, 3};
-//        int[] nums = {0};
+        //int[] nums = {0};
         int res = missingNumber(nums);
 
         System.out.println(res);
     }
 
     public static void main(String[] args) {
-        new Solution().solve();
+        new MissingNumber().solve();
     }
 }
