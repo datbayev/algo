@@ -5,3 +5,4 @@ out
 
 */resource/
 *.idea/
+*.DS_Store
