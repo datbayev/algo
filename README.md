@@ -6,7 +6,7 @@ This repository is aimed to collect implementations of some of the popular algor
 - [LeetCode](./LeetCode)
 - [CodeForces](./CodeForces)
 - [Dynamic Programming](./Dynamic Programming)
-- [Project Euler (python)](./Project Euler (python))
+- [Project Euler](./Project Euler)
 
 All solutions are in Java.
 
