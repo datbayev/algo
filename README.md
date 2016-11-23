@@ -8,6 +8,6 @@ This repository is aimed to collect implementations of some of the popular algor
 - [Dynamic Programming](./Dynamic Programming)
 - [Project Euler](./Project Euler)
 
-All solutions are in Java.
+Most solutions are in Java, some of them are in Python.
 
 If you find something useful or interesting please feel free to grab, or give me feedback via email: gmegido@gmail.com
