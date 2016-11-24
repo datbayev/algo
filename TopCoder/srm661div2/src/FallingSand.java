@@ -1,38 +1,4 @@
-import java.io.PrintWriter;
-import java.util.Scanner;
-
-/*
-    SRM 661, DIV 2, 250-problem
- */
-
 public class FallingSand {
-
-    public static void main(String[] args) {
-        new FallingSand().solve();
-    }
-
-    public void solve() {
-        Scanner in = new Scanner(System.in);
-        PrintWriter out = new PrintWriter(System.out);
-        double startTime = System.currentTimeMillis();
-
-        String[] board = {
-            "oxxxxooo",
-            "xooooxxx",
-            "..xx.ooo",
-            "oooox.o.",
-            "..x....."
-        };
-
-        String[] res = simulate(board);
-        for (int i = 0; i < res.length; i++)
-            out.println(res[i]);
-
-        double endTime = System.currentTimeMillis();
-        out.println("\nTotal execution time: " + (endTime - startTime) / 1000);
-        out.close();
-    }
-
     public String[] simulate(String[] board) {
         int n = board.length;
         int m = board[0].length();
