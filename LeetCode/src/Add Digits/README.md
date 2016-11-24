@@ -7,4 +7,5 @@ Given a non-negative integer num, repeatedly add all its digits until the result
 For example:
 Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only one digit, return it.
 
-[Solution](AddDigits.java)
+- [Solution](AddDigits.java)
+- [Tests](AddDigitsTest.java)
