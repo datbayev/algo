@@ -1,8 +1,3 @@
-import java.util.*;
-import java.math.*;
-
-import static java.lang.Math.*;
-
 public class RobotOnMoonEasy {
     int n;
     int ii;

@@ -1,5 +1,4 @@
 public class OkonomiyakiShop {
-
     public int count(int[] osize, int K) {
         int n = osize.length;
         int res = 0;

@@ -28,10 +28,4 @@ public class PrivateD2party {
 
         return result;
     }
-
-    public static void main(String[] args) throws Exception {
-        int[] a = new int[] {13, 1, 2, 6, 17, 17, 2, 18, 14, 14, 15, 7, 14, 15, 6, 8, 5, 5, 4, 2};
-        int res2 = new PrivateD2party().getsz(a);
-        System.out.println("Result is " + res2);
-    }
 }

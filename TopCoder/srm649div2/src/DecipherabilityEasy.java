@@ -1,7 +1,3 @@
-import java.util.*;
-import java.math.*;
-import static java.lang.Math.*;
-
 public class DecipherabilityEasy {
 	
 	public String check(String s, String t) {

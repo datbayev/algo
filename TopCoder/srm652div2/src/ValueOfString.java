@@ -19,9 +19,4 @@ public class ValueOfString {
         }
         return total;
     }
-
-    public static void main(String args[]) {
-        int res = new ValueOfString().findValue("babca");
-        System.out.println("Result: " + res);
-    }
 }
