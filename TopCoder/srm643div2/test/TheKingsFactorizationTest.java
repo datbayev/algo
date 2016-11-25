@@ -1,4 +1,6 @@
 import org.junit.jupiter.api.Test;
+
+//import static java.time.Duration.ofSeconds;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class TheKingsFactorizationTest {
@@ -43,5 +45,19 @@ public class TheKingsFactorizationTest {
         long N = 100000L;
         long[] primes = new long[]{2, 2, 2, 5, 5};
         assertArrayEquals(new long[]{2, 2, 2, 2, 2, 5, 5, 5, 5, 5}, new TheKingsFactorization().getVector(N, primes));
+    }
+
+    @Test
+    public void test6_time_limit() {
+        long N = 999999799000008694L;
+        long[] primes = new long[]{2, 999999937};
+        assertArrayEquals(new long[]{2, 499999931, 999999937}, new TheKingsFactorization().getVector(N, primes));
+    }
+
+    @Test
+    public void test7_time_limit() {
+        long N = 1492992010450944L;
+        long[] primes = new long[]{2, 2, 2, 2, 2, 2, 3, 3, 3};
+        assertArrayEquals(new long[]{2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 1000000007}, new TheKingsFactorization().getVector(N, primes));
     }
 }
