@@ -23,14 +23,4 @@ public class TheKingsArmyDiv2 {
 
         return atLeastOneHappy ? 1 : 2;
     }
-
-    public void solve() {
-        String[] state = {"SSSSS", "SSHHS", "SSSSS"};
-        int res = getNumber(state);
-        System.out.print(res);
-    }
-
-    public static void main(String args[]) {
-        new TheKingsArmyDiv2().solve();
-    }
 }
