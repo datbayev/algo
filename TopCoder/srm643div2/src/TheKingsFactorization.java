@@ -22,41 +22,6 @@ public class TheKingsFactorization {
         }
     }
 
-    public long[] getVector2(long n, long[] primes) {
-        initEratosphenSieve(n);
-        int i = 0;
-        while (i < primes.length) {
-            long curPrime = primes[i];
-            factors.add(curPrime);
-            n /= curPrime;
-
-            if (i < primes.length - 1) {
-                long nextPrime = primes[i + 1];
-
-                if (n % curPrime == 0) {
-                    n /= curPrime;
-                    factors.add(curPrime);
-                } else {
-                    long targetPrimeBetween = firstPrimeInBetween(curPrime, nextPrime);
-
-                    while (targetPrimeBetween != 0) {
-                        if (n % targetPrimeBetween == 0)
-                            break;
-                        targetPrimeBetween = firstPrimeInBetween(targetPrimeBetween, nextPrime);
-                    }
-
-                    if (targetPrimeBetween > 0) { // target prime found in between
-                        n /= targetPrimeBetween;
-                        factors.add(targetPrimeBetween);
-                    } else { // nothing found in between, then it's next prime
-                        n /= nextPrime;
-                        factors.add(nextPrime);
-                    }
-                }
-            } else {
-                if (n > 1) {
-                    factors.add(n);
-                }
             }
 
             i++;
