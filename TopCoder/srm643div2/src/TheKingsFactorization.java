@@ -22,35 +22,52 @@ public class TheKingsFactorization {
         }
     }
 
-            }
-
-            i++;
-        }
-
-        long[] res = new long[factors.size()];
-        for (int j = 0; j < factors.size(); j++) {
-            res[j] = factors.get(j);
-        }
-        return res;
-    }
-
     public long[] getVector(long n, long[] primes) {
-        for (int i = 0; i < primes.length; i++) {
-            factors.add(primes[i]);
-            n /= primes[i];
+        for (int i = 0; i < primes.length; i++)
+            while (n % primes[i] == 0) {
+                n /= primes[i];
+                factors.add(primes[i]);
+            }
+
+        boolean finish = n == 1;
+
+        if (n > 1) {
+            if ((factors.size() + 1) / 2 == primes.length) {
+                factors.add(n);
+                finish = true;
+            }
+
+            if (!finish) {
+                long firstPrimeDiv = primeDiv(n);
+                if (firstPrimeDiv > 0) {
+                    n /= firstPrimeDiv;
+                    factors.add(firstPrimeDiv);
+                }
+            }
         }
 
-        initEratosphenSieve((long)Math.sqrt(n));
+        if (!finish && isPrime(n)) { // the n itself is prime, probably one big prime number
+            factors.add(n);
+            finish = true;
+        }
 
-        long cur = 1;
-        while (n > 1) {
-            long curPrime = firstPrimeInBetween(cur, n);
+        if (!finish) {
+            initEratosphenSieve((long)Math.sqrt(n));
 
-            while (n % curPrime == 0) {
-                n /= curPrime;
-                factors.add(curPrime);
+            long cur = 1;
+            while (n > 1) {
+                if ((factors.size() + 1) / 2 == primes.length) { // the n itself is prime, probably one big prime number
+                    factors.add(n);
+                    break;
+                }
+                long curPrime = firstPrimeInBetween(cur, n);
+
+                while (n % curPrime == 0) {
+                    n /= curPrime;
+                    factors.add(curPrime);
+                }
+                cur++;
             }
-            cur++;
         }
 
         Collections.sort(factors);
@@ -78,5 +95,23 @@ public class TheKingsFactorization {
         }
 
         return r;
+    }
+
+    public boolean isPrime(long x) {
+        if (x % 2 == 0 || x == 1)
+            return false;
+        for (long i = 3; i * i <= x; i += 2)
+            if (x % i == 0)
+                return false;
+        return true;
+    }
+
+    public long primeDiv(long x) {
+        if (x % 2 == 0)
+            return 2L;
+        for (long i = 3; i * i <= x; i += 2)
+            if (x % i == 0)
+                return i;
+        return 0;
     }
 }
