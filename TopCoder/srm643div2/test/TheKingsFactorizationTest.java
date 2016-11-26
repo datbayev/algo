@@ -60,4 +60,39 @@ public class TheKingsFactorizationTest {
         long[] primes = new long[]{2, 2, 2, 2, 2, 2, 3, 3, 3};
         assertArrayEquals(new long[]{2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 1000000007}, new TheKingsFactorization().getVector(N, primes));
     }
+
+    @Test
+    public void test8_time_limit() {
+        long N = 199999999999999994L;
+        long[] primes = new long[]{2};
+        assertArrayEquals(new long[]{2, 99999999999999997L}, new TheKingsFactorization().getVector(N, primes));
+    }
+
+    @Test
+    public void test9_time_limit() {
+        long N = 980000002800000002L;
+        long[] primes = new long[]{2, 700000001};
+        assertArrayEquals(new long[]{2, 700000001, 700000001}, new TheKingsFactorization().getVector(N, primes));
+    }
+
+    @Test
+    public void test10_time_limit() {
+        long N = 999999951389101934L;
+        long[] primes = new long[]{2, 707106791};
+        assertArrayEquals(new long[]{2, 707106737, 707106791}, new TheKingsFactorization().getVector(N, primes));
+    }
+
+    @Test
+    public void test11_time_limit() {
+        long N = 998254128064864128L;
+        long[] primes = new long[]{2, 2, 2, 2, 701};
+        assertArrayEquals(new long[]{2, 2, 2, 2, 2, 2, 2, 3, 701, 3708445257017L}, new TheKingsFactorization().getVector(N, primes));
+    }
+
+    @Test
+    public void test12_time_limit() {
+        long N = 970833680167774470L;
+        long[] primes = new long[]{2, 5};
+        assertArrayEquals(new long[]{2, 3, 5, 32361122672259149L}, new TheKingsFactorization().getVector(N, primes));
+    }
 }
