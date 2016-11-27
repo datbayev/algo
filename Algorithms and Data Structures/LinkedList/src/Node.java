@@ -27,4 +27,14 @@ public class Node {
     public String toString() {
         return Integer.toString(this.data);
     }
+
+    public static int getLength(Node head) {
+        if (head == null)
+            return 0;
+
+        if (head.next == null)
+            return 1;
+
+        return getLength(head.next) + 1;
+    }
 }
