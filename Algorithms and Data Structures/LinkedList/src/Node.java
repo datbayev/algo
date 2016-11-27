@@ -23,4 +23,8 @@ public class Node {
         }
         System.out.println(n.data);
     }
+
+    public String toString() {
+        return Integer.toString(this.data);
+    }
 }
