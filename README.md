@@ -7,6 +7,7 @@ This repository is aimed to collect implementations of some of the popular algor
 - [CodeForces](./CodeForces)
 - [Dynamic Programming](./Dynamic Programming)
 - [Project Euler](./Project Euler)
+- [Algorithms and Data Structures](./Algorithms and Data Structures)
 
 Most solutions are in Java, some of them are in Python.
 
