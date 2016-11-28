@@ -6,7 +6,13 @@ public class RemoveDuplicates {
         Node cur = prev.next;
         HashSet<Integer> used = new HashSet<>();
         used.add(prev.data);
-        while (cur.next != null) {
+
+        if (used.contains(cur.data)) { // first iteration, to cover case of similar first two elements
+            prev.next = cur.next;
+            cur = cur.next;
+        }
+
+        while (cur != null && cur.next != null) {
             if (!used.contains(cur.data)) {
                 used.add(cur.data);
 
