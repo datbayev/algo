@@ -15,6 +15,14 @@ public class Node {
         n.next = end;
     }
 
+    void appendToTail(Node end) {
+        Node n = this;
+        while (n.next != null)
+            n = n.next;
+
+        n.next = end;
+    }
+
     void printList() {
         Node n = this;
         while (n.next != null) {
