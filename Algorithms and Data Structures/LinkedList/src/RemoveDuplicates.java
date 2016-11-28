@@ -1,27 +1,6 @@
 import java.util.HashSet;
 
 public class RemoveDuplicates {
-    public static void main(String[] args) {
-        Node head = new Node(1);
-
-        head.appendToTail(10);
-        head.appendToTail(5);
-        head.appendToTail(3);
-        head.appendToTail(16);
-        head.appendToTail(3);
-        head.appendToTail(5);
-        head.appendToTail(10);
-        head.appendToTail(1);
-        head.appendToTail(1);
-        head.appendToTail(1);
-        head.appendToTail(16);
-        head.appendToTail(7);
-
-        head.printList();
-        removeDuplicates(head);
-        head.printList();
-    }
-
     static void removeDuplicates(Node head) {
         Node prev = head;
         Node cur = prev.next;
