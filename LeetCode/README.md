@@ -19,6 +19,7 @@ Feel free to grab if you find something useful or interesting.
 - [Perfect Squares](./src/Perfect Squares)
 - [Permutations](./src/Permutations)
 - [Remove duplicates from Sorted List II](./src/Remove duplicates from Sorted List II)
+- [Reverse Linked List](./src/Reverse Linked List)
 - [Single Number](./src/Single Number)
 - [Two Sum](./src/Two Sum)
 - [Ugly Number II](./src/Ugly Number II)
