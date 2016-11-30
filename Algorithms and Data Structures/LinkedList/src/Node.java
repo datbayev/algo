@@ -45,4 +45,22 @@ public class Node {
 
         return getLength(head.next) + 1;
     }
+
+    public static String pathToString(Node node) {
+        if (node == null)
+            return "";
+
+        if (node.next == null)
+            return node.toString();
+
+        String result = "";
+        while (node.next != null) {
+            result = result + node.toString() + " ";
+            node = node.next;
+        }
+
+        result = result + node.toString();
+
+        return result;
+    }
 }
