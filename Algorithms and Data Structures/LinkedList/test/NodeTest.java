@@ -36,4 +36,28 @@ public class NodeTest {
         assertEquals(6, Node.getLength(n));
     }
 
+    @Test
+    void testNumToDigitsNode() {
+        int num = 912;
+        Node numDigitsNode = Node.numToList(num);
+        assertEquals("2 1 9", Node.pathToString(numDigitsNode));
+    }
+
+    @Test
+    void testNumToDigitsNode_2() {
+        int num = 2;
+        Node numDigitsNode = Node.numToList(num);
+        assertEquals("2", Node.pathToString(numDigitsNode));
+    }
+
+    @Test
+    void testModeDigitsToNum() {
+        Node node = new Node(7);
+        node.appendToTail(1);
+        node.appendToTail(6);
+
+        int res = Node.listToNum(node);
+        assertEquals(617, res);
+    }
+
 }
