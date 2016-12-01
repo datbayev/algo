@@ -15,12 +15,12 @@ public class Node {
         n.next = end;
     }
 
-    void appendToTail(Node end) {
+    void appendToTail(Node newTail) {
         Node n = this;
         while (n.next != null)
             n = n.next;
 
-        n.next = end;
+        n.next = newTail;
     }
 
     void printList() {
