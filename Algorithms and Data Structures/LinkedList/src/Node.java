@@ -102,4 +102,16 @@ public class Node {
 
         return head;
     }
+
+    public static Node reversedClone(Node currentNode) {
+        if (currentNode == null)
+            return null;
+
+        if (currentNode.next == null)
+            return new Node(currentNode.data);
+
+        Node newHead = reversedClone(currentNode.next);
+        newHead.appendToTail(currentNode.data);
+        return newHead;
+    }
 }
