@@ -60,4 +60,16 @@ public class NodeTest {
         assertEquals(617, res);
     }
 
+    @Test
+    void testReversedClone() {
+        Node node = new Node(1);
+        node.appendToTail(2);
+        node.appendToTail(10);
+        node.appendToTail(6);
+        node.appendToTail(23);
+
+        Node reversedClone = Node.reversedClone(node);
+        assertEquals("23 6 10 2 1", Node.pathToString(reversedClone));
+    }
+
 }
