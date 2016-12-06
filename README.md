@@ -6,6 +6,7 @@ This repository is aimed to collect implementations of some of the popular algor
 - [LeetCode](./LeetCode)
 - [CodeForces](./CodeForces)
 - [Dynamic Programming](./Dynamic Programming)
+- [Hackerrank](./Hackerrank)
 - [Project Euler](./Project Euler)
 - [Algorithms and Data Structures](./Algorithms and Data Structures)
 
