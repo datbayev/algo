@@ -47,7 +47,7 @@ public class BetweenTwoSets {
 
         int res = 0;
 
-        for (int i = lcm; i <= gcd; i++) {
+        for (int i = lcm; i <= gcd; i += lcm) {
             if (i % lcm == 0 && gcd % i == 0)
                 res++;
         }
