@@ -31,4 +31,10 @@ public class BitOperations {
 
         return res;
     }
+
+    // clears all bits from most significant up to i-th bit
+    public static int clearBitThoughI(int x, int i) {
+        int mask = (1 << i) - 1;
+        return x & mask;
+    }
 }

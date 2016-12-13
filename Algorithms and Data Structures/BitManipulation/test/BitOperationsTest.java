@@ -76,4 +76,35 @@ public class BitOperationsTest {
         assertEquals("1", BitOperations.intToBit(1));
     }
 
+    @Test
+    void testClearBitThoughI0() {
+        int x = 89; // 1011001
+        int i = 4;
+        int cleared = BitOperations.clearBitThoughI(x, i);
+        assertEquals("1001", BitOperations.intToBit(cleared));
+    }
+
+    @Test
+    void testClearBitThoughI1() {
+        int x = 1533; // 10111111101
+        int i = 7;
+        int cleared = BitOperations.clearBitThoughI(x, i);
+        assertEquals("1111101", BitOperations.intToBit(cleared));
+    }
+
+    @Test
+    void testClearBitThoughI2() {
+        int x = 287; // 100011111
+        int i = 1;
+        int cleared = BitOperations.clearBitThoughI(x, i);
+        assertEquals("1", BitOperations.intToBit(cleared));
+    }
+
+    @Test
+    void testClearBitThoughI3() {
+        int x = 287; // 100011111
+        int i = 5;
+        int cleared = BitOperations.clearBitThoughI(x, i);
+        assertEquals("11111", BitOperations.intToBit(cleared));
+    }
 }
