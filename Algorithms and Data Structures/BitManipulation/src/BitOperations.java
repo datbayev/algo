@@ -16,5 +16,8 @@ public class BitOperations {
         return x & mask;
     }
 
-
+    // cuts the right most bit
+    public static int rightShift(int x, int i) {
+        return x >>> i;
+    }
 }

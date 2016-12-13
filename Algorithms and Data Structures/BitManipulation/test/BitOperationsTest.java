@@ -57,4 +57,15 @@ public class BitOperationsTest {
         assertEquals(68, BitOperations.clearBit(x, 5));
         assertEquals(36, BitOperations.clearBit(x, 6));
     }
+
+    @Test
+    void testRightShift1() {
+        int x = 89; // 1011001
+        assertEquals(44, BitOperations.rightShift(x, 1)); // 101100
+        assertEquals(22, BitOperations.rightShift(x, 2)); // 10110
+        assertEquals(11, BitOperations.rightShift(x, 3)); // 1011
+        assertEquals(5, BitOperations.rightShift(x, 4)); // 101
+        assertEquals(2, BitOperations.rightShift(x, 5)); // 10
+        assertEquals(1, BitOperations.rightShift(x, 6)); // 1
+    }
 }
