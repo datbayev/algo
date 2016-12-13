@@ -20,4 +20,15 @@ public class BitOperations {
     public static int rightShift(int x, int i) {
         return x >>> i;
     }
+
+    // binary representation of int
+    public static String intToBit(int x) {
+        String res = "";
+        while (x > 0) {
+            res = x % 2 + res;
+            x >>= 1;
+        }
+
+        return res;
+    }
 }

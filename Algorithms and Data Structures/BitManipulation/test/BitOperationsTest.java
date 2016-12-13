@@ -68,4 +68,12 @@ public class BitOperationsTest {
         assertEquals(2, BitOperations.rightShift(x, 5)); // 10
         assertEquals(1, BitOperations.rightShift(x, 6)); // 1
     }
+
+    @Test
+    void testIntToBit0() {
+        assertEquals("111", BitOperations.intToBit(7));
+        assertEquals("10000000000", BitOperations.intToBit(1024));
+        assertEquals("1", BitOperations.intToBit(1));
+    }
+
 }
