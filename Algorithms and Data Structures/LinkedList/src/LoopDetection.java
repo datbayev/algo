@@ -40,6 +40,7 @@ public class LoopDetection {
                     found = true;
                     break;
                 }
+
                 slow = slow.next;
                 fast = shiftInLoop(fast, i);
 
@@ -56,7 +57,7 @@ public class LoopDetection {
                 nodesNum = set.size();
 
             if (found) {
-                result = slow;
+                result = fast;
                 break;
             }
 
