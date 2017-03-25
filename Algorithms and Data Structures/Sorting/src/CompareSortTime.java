@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class CompareSortTime {
     public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        int n = 100000;
+        int n = 1000000; // 1 mln
         int[] numbers = new int[n];
 
         for (int i = 0; i < n; i++) {
@@ -15,23 +15,24 @@ public class CompareSortTime {
         int[] arrayClone1 = numbers.clone();
         int[] arrayClone2 = numbers.clone();
         int[] arrayClone3 = numbers.clone();
-        int[] arrayClone4 = numbers.clone();
 
-        double selectionSortTime = getSortingAlgorithmRunningTime("SelectionSort", arrayClone1);
-        double insertionSortTime = getSortingAlgorithmRunningTime("InsertionSort", arrayClone2);
-        double shellSortTime = getSortingAlgorithmRunningTime("ShellSort", arrayClone3);
-        double quickSortTime = getSortingAlgorithmRunningTime("QuickSort", arrayClone4);
-
-        System.out.println(String.format("Selection sort time (%d elements): %f seconds", n, selectionSortTime));
-        System.out.println(String.format("Insertion sort time (%d elements): %f seconds", n, insertionSortTime));
-        System.out.println(String.format("Shell sort time (%d elements): %f seconds", n, shellSortTime));
+        double quickSortTime = getSortingAlgorithmRunningTime("QuickSort", arrayClone1);
         System.out.println(String.format("Quick sort time (%d elements): %f seconds\n", n, quickSortTime));
 
-        System.out.println(String.format("Insertion sort is %s times faster that Selection sort", selectionSortTime / insertionSortTime));
-        System.out.println(String.format("Shell sort is %s times faster that Selection sort", selectionSortTime / shellSortTime));
-        System.out.println(String.format("Shell sort is %s times faster that Insertion sort", insertionSortTime / shellSortTime));
-        System.out.println(String.format("Quick sort is %s times faster that Insertion sort", insertionSortTime / quickSortTime));
-        System.out.println(String.format("Quick sort is %s times faster that Shell sort", shellSortTime / quickSortTime));
+        double mergeSortTime = getSortingAlgorithmRunningTime("MergeSort", arrayClone2);
+        System.out.println(String.format("Merge sort time (%d elements): %f seconds\n", n, mergeSortTime));
+
+        double shellSortTime = getSortingAlgorithmRunningTime("ShellSort", arrayClone3);
+        System.out.println(String.format("Shell sort time (%d elements): %f seconds", n, shellSortTime));
+
+        // Insertion and Selection sorts are too long
+        // int[] arrayClone4 = numbers.clone();
+        // int[] arrayClone5 = numbers.clone();
+        // double insertionSortTime = getSortingAlgorithmRunningTime("InsertionSort", arrayClone4);
+        // System.out.println(String.format("Insertion sort time (%d elements): %f seconds", n, insertionSortTime));
+
+        // double selectionSortTime = getSortingAlgorithmRunningTime("SelectionSort", arrayClone5);
+        // System.out.println(String.format("Selection sort time (%d elements): %f seconds", n, selectionSortTime));
     }
 
     public static double getSortingAlgorithmRunningTime(String soringClassName, int[] arr) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InstantiationException, InvocationTargetException {
