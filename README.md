@@ -2,14 +2,13 @@
 
 This repository is aimed to collect implementations of some of the popular algorithms and data structures.
 
-- [TopCoder](./TopCoder)
 - [LeetCode](./LeetCode)
+- [TopCoder](./TopCoder)
 - [CodeForces](./CodeForces)
-- [Dynamic Programming](./Dynamic Programming)
+- [Dynamic Programming](./DynamicProgramming)
 - [Hackerrank](./Hackerrank)
-- [Project Euler](./Project Euler)
-- [Algorithms and Data Structures](./Algorithms and Data Structures)
+- [Project Euler](./ProjectEuler)
+- [Algorithms and Data Structures](./AlgorithmsAndDataStructures)
 
-Most solutions are in Java, some of them are in Python.
 
 If you find something useful or interesting please feel free to grab, or give me feedback via email: gmegido@gmail.com
