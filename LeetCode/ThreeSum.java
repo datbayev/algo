@@ -1,6 +1,15 @@
 // https://leetcode.com/problems/3sum/description/
 // 15. 3Sum
 
+/*
+
+First we sort initial array, then loop over it from left to right 
+with current position "i". Then we move two indexes until they meet:
+one from i+1 towards right, the other from n-1 towards left
+and try finding target sum.
+
+*/
+
 class ThreeSum {
     List<List<Integer>> res;
     
