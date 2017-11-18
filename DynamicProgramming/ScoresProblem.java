@@ -1,15 +1,31 @@
+package DynamicProgramming;
+
 public class ScoresProblem {
 
-    int[] moves = {3, 5, 10}; // you can hit either 3, 5 or 10 scores each move
-
-    public int numberOfWays(int n) {
+    /*
+    
+     */
+    public static int countNumberOfScoreCombinations(int n, int[] scores) {
         int[] d = new int[n + 1];
         d[0] = 1;
-
-        for (int move : moves) {
-            for (int i = move; i <= n; i++)
-                d[i] += d[i - move];
+        for (int i = 1; i <= n; i++) {
+            for (int s : scores)
+                if (i - s >= 0)
+                    d[i] += d[i - s];
         }
+
+        return d[n];
+    }
+
+    /*
+    Counts unique combinations, number of ways to get final score N
+     */
+    public static int numberOfNonRepeatedCombinations(int n, int[] scores) {
+        int[] d = new int[n + 1];
+        d[0] = 1;
+        for (int score : scores)
+            for (int i = score; i <= n; i++)
+                d[i] += d[i - score];
 
         return d[n];
     }
