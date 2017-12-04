@@ -4,12 +4,12 @@ import java.util.Random;
 
 public class CompareSortTime {
     public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        int n = 1000000; // 1 mln
+        int n = 2000000; // 1 mln
         int[] numbers = new int[n];
 
         for (int i = 0; i < n; i++) {
             Random generator = new Random();
-            numbers[i] = generator.nextInt(100000);
+            numbers[i] = generator.nextInt(Integer.MAX_VALUE);
         }
 
         int[] arrayClone1 = numbers.clone();

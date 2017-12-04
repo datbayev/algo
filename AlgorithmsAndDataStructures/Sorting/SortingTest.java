@@ -1,10 +1,10 @@
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.Assert.assertArrayEquals;
 
 public class SortingTest {
     @Test
-    void testBase() {
+    public void testBase() {
         int[] arr = {10, 3, 6, 4, 5};
         int[] arr2 = arr.clone();
         int[] arr3 = arr.clone();
@@ -30,7 +30,7 @@ public class SortingTest {
     }
 
     @Test
-    void testAllEqual() {
+    public void testAllEqual() {
         int[] arr = {1, 1, 1, 1, 1};
         int[] arr2 = arr.clone();
         int[] arr3 = arr.clone();
@@ -56,7 +56,7 @@ public class SortingTest {
     }
 
     @Test
-    void testReversed() {
+    public void testReversed() {
         int[] arr = {10, 9, 8, 7, 6};
         int[] arr2 = arr.clone();
         int[] arr3 = arr.clone();
@@ -82,7 +82,7 @@ public class SortingTest {
     }
 
     @Test
-    void testOneElement() {
+    public void testOneElement() {
         int[] arr = {0};
         int[] arr2 = arr.clone();
         int[] arr3 = arr.clone();
