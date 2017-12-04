@@ -1,3 +1,5 @@
+package DynamicProgramming;
+
 public class CoinChangeProblem {
     public int numberOfChanges(int n, int[] c) {
         int[] d = new int[n + 1];

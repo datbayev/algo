@@ -1,3 +1,5 @@
+package DynamicProgramming;
+
 public class Fibo {
     public static int fib (int n) {
         if (n == 1)
