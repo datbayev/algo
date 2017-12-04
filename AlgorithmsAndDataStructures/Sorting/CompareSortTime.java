@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class CompareSortTime {
     public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        int n = 2000000; // 1 mln
+        int n = 2000000; // 2 mln
         int[] numbers = new int[n];
 
         for (int i = 0; i < n; i++) {
