@@ -106,4 +106,13 @@ public class SortingTest {
         MergeSort.sort(arr5);
         assertArrayEquals(arr5, sorted);
     }
+
+    @Test
+    public void testMergeSort() {
+        int[] arr = {10, 9, 8, 7, 6, 8, 1, 6, 2, 3, 0, 6, 4, 2, 10, 20};
+        int[] sorted = new int[]{0, 1, 2, 2, 3, 4, 6, 6, 6, 7, 8, 8, 9, 10, 10, 20};
+
+        MergeSort.sort(arr);
+        assertArrayEquals(arr, sorted);
+    }
 }
