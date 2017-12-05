@@ -2,7 +2,8 @@ public class MergeSort {
     private static int[] aux;
     public static void sort(int[] arr) {
         aux = new int[arr.length];
-        sort(arr, 0, arr.length - 1);
+//        sort(arr, 0, arr.length - 1);
+        sortBottomUp(arr);
     }
 
     private static void sort(int[] arr, int lo, int hi) {
@@ -12,7 +13,8 @@ public class MergeSort {
         int mid = lo + (hi - lo) / 2;
         sort(arr, lo, mid);
         sort(arr, mid + 1, hi);
-        merge(arr, lo, mid, hi);
+        if (arr[mid] > arr[mid + 1])
+            merge(arr, lo, mid, hi);
     }
 
     private static void merge(int[] arr, int lo, int mid, int hi) {
@@ -31,5 +33,12 @@ public class MergeSort {
                 arr[k] = aux[j++];
             else
                 arr[k] = aux[i++];
+    }
+
+    private static void sortBottomUp(int[] arr) {
+        int n = arr.length;
+        for (int size = 1; size < n; size *= 2)
+            for (int lo = 0; lo < n - size; lo += 2 * size)
+                merge(arr, lo, lo + size - 1, Math.min(n - 1, lo + 2 * size - 1));
     }
 }
