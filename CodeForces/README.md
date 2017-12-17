@@ -1,5 +1,5 @@
 # CodeForces
 
-My solutions for CodeForces problems.
+My solutions for CodeForces.com problems.
 
-Feel free to grab if you find something useful or interesting.
+Feel free to grab if you find something (hopefully) useful or interesting.
