@@ -1,4 +1,4 @@
-package DynamicProgramming;
+package algorithms.dynamic_programming;
 
 public class Fibo {
     public static int fib (int n) {

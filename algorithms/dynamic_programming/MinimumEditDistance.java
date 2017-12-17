@@ -1,4 +1,4 @@
-package DynamicProgramming;
+package algorithms.dynamic_programming;
 
 public class MinimumEditDistance {
     public static int getDistance(String s1, String s2) {

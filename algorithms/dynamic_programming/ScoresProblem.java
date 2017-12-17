@@ -1,10 +1,7 @@
-package DynamicProgramming;
+package algorithms.dynamic_programming;
 
 public class ScoresProblem {
 
-    /*
-    
-     */
     public static int countNumberOfScoreCombinations(int n, int[] scores) {
         int[] d = new int[n + 1];
         d[0] = 1;

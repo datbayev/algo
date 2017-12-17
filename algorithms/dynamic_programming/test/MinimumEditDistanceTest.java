@@ -1,5 +1,6 @@
-package DynamicProgramming;
+package algorithms.dynamic_programming.test;
 
+import algorithms.dynamic_programming.MinimumEditDistance;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

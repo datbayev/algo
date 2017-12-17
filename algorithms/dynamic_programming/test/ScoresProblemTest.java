@@ -1,5 +1,4 @@
-package DynamicProgramming;
-
+import algorithms.dynamic_programming.ScoresProblem;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

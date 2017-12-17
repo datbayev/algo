@@ -1,4 +1,4 @@
-package DynamicProgramming;
+package algorithms.dynamic_programming;
 
 public class CoinChangeProblem {
     public int numberOfChanges(int n, int[] c) {
