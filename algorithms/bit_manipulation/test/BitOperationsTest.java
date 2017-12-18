@@ -6,7 +6,7 @@ import static org.junit.Assert.assertEquals;
 
 public class BitOperationsTest {
     @Test
-    void testGetBit1() {
+    public void testGetBit1() {
         int x = 20; // 16 + 4 = 10100
         Assert.assertEquals(true, BitOperations.getBit(x, 2));
         assertEquals(true, BitOperations.getBit(x, 4));
@@ -15,7 +15,7 @@ public class BitOperationsTest {
     }
 
     @Test
-    void testGetBit2() {
+    public void testGetBit2() {
         int x = 100; // 64 + 32 + 4 = 1100100
         assertEquals(false, BitOperations.getBit(x, 0));
         assertEquals(false, BitOperations.getBit(x, 1));
@@ -27,7 +27,7 @@ public class BitOperationsTest {
     }
 
     @Test
-    void testSetBit1() {
+    public void testSetBit1() {
         int x = 20; // 16 + 4 = 10100
         assertEquals(21, BitOperations.setBit(x, 0));
         assertEquals(22, BitOperations.setBit(x, 1));
@@ -38,7 +38,7 @@ public class BitOperationsTest {
     }
 
     @Test
-    void testClearBit0() {
+    public void testClearBit0() {
         int x = 20;
         assertEquals(20, BitOperations.clearBit(x, 0));
         assertEquals(20, BitOperations.clearBit(x, 1));
@@ -49,7 +49,7 @@ public class BitOperationsTest {
     }
 
     @Test
-    void testClearBit1() {
+    public void testClearBit1() {
         int x = 100;
         assertEquals(100, BitOperations.clearBit(x, 0));
         assertEquals(100, BitOperations.clearBit(x, 1));
@@ -61,7 +61,7 @@ public class BitOperationsTest {
     }
 
     @Test
-    void testRightShift1() {
+    public void testRightShift1() {
         int x = 89; // 1011001
         assertEquals(44, BitOperations.rightShift(x, 1)); // 101100
         assertEquals(22, BitOperations.rightShift(x, 2)); // 10110
@@ -72,14 +72,14 @@ public class BitOperationsTest {
     }
 
     @Test
-    void testIntToBit0() {
+    public void testIntToBit0() {
         assertEquals("111", BitOperations.intToBit(7));
         assertEquals("10000000000", BitOperations.intToBit(1024));
         assertEquals("1", BitOperations.intToBit(1));
     }
 
     @Test
-    void testClearBitThoughI0() {
+    public void testClearBitThoughI0() {
         int x = 89; // 1011001
         int i = 4;
         int cleared = BitOperations.clearBitThoughI(x, i);
@@ -87,7 +87,7 @@ public class BitOperationsTest {
     }
 
     @Test
-    void testClearBitThoughI1() {
+    public void testClearBitThoughI1() {
         int x = 1533; // 10111111101
         int i = 7;
         int cleared = BitOperations.clearBitThoughI(x, i);
@@ -95,7 +95,7 @@ public class BitOperationsTest {
     }
 
     @Test
-    void testClearBitThoughI2() {
+    public void testClearBitThoughI2() {
         int x = 287; // 100011111
         int i = 1;
         int cleared = BitOperations.clearBitThoughI(x, i);
@@ -103,7 +103,7 @@ public class BitOperationsTest {
     }
 
     @Test
-    void testClearBitThoughI3() {
+    public void testClearBitThoughI3() {
         int x = 287; // 100011111
         int i = 5;
         int cleared = BitOperations.clearBitThoughI(x, i);

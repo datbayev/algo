@@ -6,7 +6,7 @@ import static org.junit.Assert.assertEquals;
 
 public class IntersectionTest {
     @Test
-    void test0() {
+    public void test0() {
         Node head1 = new Node(10);
         Node head2 = new Node(20);
 
@@ -31,7 +31,7 @@ public class IntersectionTest {
     }
 
     @Test
-    void testNull() {
+    public void testNull() {
         Node head1 = new Node(10);
         Node head2 = new Node(20);
 
