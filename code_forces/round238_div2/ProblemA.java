@@ -1,4 +1,4 @@
-package codeforces.round238_div2;
+package code_forces.round238_div2;
 
 import java.io.*;
 import java.util.*;
@@ -59,6 +59,6 @@ public class ProblemA {
     }
 
     public static void main(String[] args) {
-        new codeforces.round305_div2.ProblemA().solve();
+        new code_forces.round305_div2.ProblemA().solve();
     }
 }

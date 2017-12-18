@@ -5,7 +5,7 @@ This repository is aimed to collect implementations of some of the popular algor
 - [Algorithms and Data Structures](./algorithms)
 - [LeetCode](./leet_code)
 - [TopCoder](./TopCoder)
-- [CodeForces](./CodeForces)
+- [CodeForces](./codeforces)
 - [Hackerrank](./Hackerrank)
 - [Project Euler](./ProjectEuler)
 

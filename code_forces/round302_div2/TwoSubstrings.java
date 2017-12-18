@@ -1,4 +1,4 @@
-package codeforces.round302_div2;
+package code_forces.round302_div2;
 
 import java.io.*;
 import java.util.*;

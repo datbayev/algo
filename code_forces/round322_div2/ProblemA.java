@@ -1,4 +1,4 @@
-package codeforces.round322_div2;
+package code_forces.round322_div2;
 
 import java.io.PrintWriter;
 import java.util.*;
