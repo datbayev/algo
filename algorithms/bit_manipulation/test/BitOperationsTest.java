@@ -1,5 +1,4 @@
 import algorithms.bit_manipulation.BitOperations;
-import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -8,7 +7,7 @@ public class BitOperationsTest {
     @Test
     public void testGetBit1() {
         int x = 20; // 16 + 4 = 10100
-        Assert.assertEquals(true, BitOperations.getBit(x, 2));
+        assertEquals(true, BitOperations.getBit(x, 2));
         assertEquals(true, BitOperations.getBit(x, 4));
         assertEquals(false, BitOperations.getBit(x, 0));
         assertEquals(false, BitOperations.getBit(x, 1));
