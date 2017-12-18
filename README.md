@@ -3,7 +3,7 @@
 This repository is aimed to collect implementations of some of the popular algorithms and data structures.
 
 - [Algorithms and Data Structures](./algorithms)
-- [LeetCode](./leet_code)
+- [LeetCode](./leetcode)
 - [TopCoder](./TopCoder)
 - [CodeForces](./codeforces)
 - [Hackerrank](./Hackerrank)
