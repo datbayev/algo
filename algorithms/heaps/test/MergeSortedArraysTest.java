@@ -20,8 +20,8 @@ public class MergeSortedArraysTest {
         mainList.add(l3);
         mainList.add(l4);
 
-        List<Integer> actualResult = new ArrayList<>(Arrays.asList(1,1,2,3,3,4,4,7,8,10,11,12,21,33,38,41,48,99));
+        List<Integer> expectedResult = new ArrayList<>(Arrays.asList(1,1,2,3,3,4,4,7,8,10,11,12,21,33,38,41,48,99));
 
-        assertEquals(actualResult, mergeSortedArrays(mainList));
+        assertEquals(expectedResult, mergeSortedArrays(mainList));
     }
 }
