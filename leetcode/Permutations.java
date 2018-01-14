@@ -3,57 +3,42 @@ package leetcode;
 // https://leetcode.com/problems/permutations
 // 46. Permutations
 
-import java.io.PrintWriter;
 import java.util.*;
 
 public class Permutations {
-    List<List<Integer>> result;
-    int[] nums;
-
-    public void swap(int x, int y) {
-        int t = nums[x];
-        nums[x] = nums[y];
-        nums[y] = t;
-    }
+    List<List<Integer>> res;
+    boolean[] used;
 
     public List<List<Integer>> permute(int[] nums) {
-        this.result = new ArrayList();
-        this.nums = nums;
-        dfs(0);
-        return this.result;
+        res = new ArrayList();
+        if (nums.length == 0) {
+            res.add(new ArrayList());
+            return res;
+        }
+
+        used = new boolean[nums.length];
+
+        rec(0, nums, new ArrayList());
+
+        return res;
     }
 
-    public void dfs(int pos) {
-        if (pos == nums.length) {
-            List<Integer> newSolution = new ArrayList<Integer>();
-            for (int i = 0; i < this.nums.length; i++)
-                newSolution.add(this.nums[i]);
-            this.result.add(newSolution);
+    public void rec(int x, int[] nums, List<Integer> cur) {
+        if (cur.size() == nums.length) {
+            res.add(new ArrayList(cur));
+            return;
         }
-        for (int i = pos; i < nums.length; i++) {
-            swap(i, pos);
-            dfs(pos+1);
-            swap(pos, i);
+
+        for (int i = 0; i < nums.length; i++) {
+            if (!used[i]) {
+                used[i] = true;
+                cur.add(nums[i]);
+
+                rec(i + 1, nums, cur);
+
+                cur.remove(cur.size() - 1);
+                used[i] = false;
+            }
         }
-    }
-
-    public void solve() {
-        PrintWriter out = new PrintWriter(System.out);
-        int[] nums = {1};
-
-        List<List<Integer>> permutations = permute(nums);
-
-        for (int i = 0; i < permutations.size(); i++) {
-            List<Integer> curList = permutations.get(i);
-            for (int j = 0; j < curList.size(); j++)
-                out.print(curList.get(j) + " ");
-
-            out.println();
-        }
-        out.close();
-    }
-
-    public static void main(String[] args) {
-	    new Permutations().solve();
     }
 }
