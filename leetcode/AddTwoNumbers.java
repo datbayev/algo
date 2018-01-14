@@ -12,61 +12,40 @@ class AddTwoNumbers {
     }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode head1 = l1;
-        ListNode head2 = l2;
-        
-        int buf = 0;
-        ListNode res = null;
-        ListNode prev = null;
-        
-        while (head1 != null && head2 != null) {
-            
-            int curVal = head1.val + head2.val + buf;
-            
-            if (curVal > 9) {
-                buf = 1;
-                curVal -= 10;
-            } else
-                buf = 0;
-            
-            ListNode cur = new ListNode(curVal);
-            
-            if (prev != null)
-                prev.next = cur;
-            
-            if (res == null)
-                res = cur;
-            
-            prev = cur;
-            
-            head1 = head1.next;
-            head2 = head2.next;
+        ListNode res = l1;
+        ListNode last = l1;
+        int carry = 0;
+
+        while (l1 != null && l2 != null) {
+            int cur = l1.val + l2.val + carry;
+
+            l1.val = cur % 10;
+            carry = cur / 10;
+
+            last = l1;
+
+            l1 = l1.next;
+            l2 = l2.next;
         }
-        
-        if (head1 != null || head2 != null) {
-            ListNode tail = head1 != null ? head1 : head2;
-            
-            while (tail != null) {
-                int curVal = tail.val + buf;
-                if (curVal > 9) {
-                    curVal = 0;
-                    buf = 1;
-                } else
-                    buf = 0;
-                
-                ListNode cur = new ListNode(curVal);
-                
-                tail = tail.next;
-                prev.next = cur;
-                prev = cur;
+
+        ListNode rest = l1 != null ? l1 : l2;
+
+        if (rest != null) {
+            last.next = rest;
+            while (rest != null) {
+                int cur = rest.val + carry;
+
+                rest.val = cur % 10;
+                carry = cur / 10;
+
+                last = rest;
+                rest = rest.next;
             }
         }
-        
-        if (buf == 1) {
-            ListNode last = new ListNode(1);
-            prev.next = last;
-        }
-        
+
+        if (carry > 0)
+            last.next = new ListNode(carry);
+
         return res;
     }
 }
