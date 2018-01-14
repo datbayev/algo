@@ -6,25 +6,19 @@ package leetcode;
 import java.util.*;
 
 class Subsets {
+    List<List<Integer>> res;
+
     public List<List<Integer>> subsets(int[] nums) {
-        List<List<Integer>> res = new ArrayList();
-        List<Integer> curSet = new ArrayList();
-        int n = nums.length;
-        res.add(curSet);
-        for (int i = 1; i < (1 << n); i++) {
-            curSet = new ArrayList();
-            int x = i;
-            int j = 0;
-            while (x > 0) {
-                if (x % 2 == 1)
-                    curSet.add(nums[j]);
-                j++;
-                x /= 2;
-            }
-            
-            res.add(curSet);
+        res = new ArrayList();
+        for (int i = 0; i < (1 << nums.length); i++) {
+            List<Integer> subset = new ArrayList();
+            for (int j = 0; j < nums.length; j++)
+                if ((i & (1 << j)) > 0)
+                    subset.add(nums[j]);
+
+            res.add(subset);
         }
-        
+
         return res;
     }
 }
