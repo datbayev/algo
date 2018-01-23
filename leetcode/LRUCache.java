@@ -6,86 +6,88 @@ package leetcode;
 import java.util.*;
 
 class LRUCache {
-    
+
     Map<Integer, Node> cache;
     int capacity;
     Node head;
     Node tail;
-    
-    public LRUCache(int capacity) {
-        cache = new HashMap(capacity);
-        this.capacity = capacity;
-        head = null;
-        tail = null;
-    }
-    
-    public int get(int key) {
-        if (!cache.containsKey(key))
-            return -1;
-        
-        Node cur = cache.get(key);
 
-        if (capacity == 1 || cur.next == null)
-            return cur.val;
-        
-        moveToTail(cur);
-        
-        return cur.val;
+    private void moveToTail(Node cur) {
+        if (cur.next == null)
+            return;
+
+        removeNode(cur);
+        addNodeToTail(cur);
     }
-    
-    public void moveToTail(Node cur) {
+
+    private void removeNode(Node cur) {
         Node next = cur.next;
         Node prev = cur.prev;
-        
+
         if (prev != null) { // there is something before cur, re-link nodes
             next.prev = prev;
             prev.next = next;
         } else {
-            head = head.next;
+            head = head.next; // cur is the head, cut the head, and bring cur to tail
             head.prev = null;
         }
-        
+    }
+
+    private void addNodeToTail(Node cur) {
+        if (tail == null) {
+            tail = cur;
+            head = cur;
+            return;
+        }
+
         tail.next = cur;
         cur.prev = tail;
         cur.next = null;
+
         tail = cur;
     }
-    
+
+    public LRUCache(int capacity) {
+        cache = new HashMap(capacity);
+        this.capacity = capacity;
+    }
+
+    public int get(int key) {
+        if (!cache.containsKey(key))
+            return -1;
+
+        Node cur = cache.get(key);
+
+        moveToTail(cur);
+
+        return cur.val;
+    }
+
     public void put(int key, int value) {
         if (cache.containsKey(key)) {
             Node cur = cache.get(key);
             cur.val = value;
-            if (cur.next != null)
-                moveToTail(cur);
-            
+            moveToTail(cur);
+
             return;
         }
-        
+
         Node node = new Node(key, value);
-        
-        if (tail == null) { // no data at all yet
-            head = node;
-            tail = node;
-        } else {
-            node.prev = tail;
-            tail.next = node;
-            tail = node;
-        }
-        
+
+        addNodeToTail(node);
+
         cache.put(key, node);
-        
+
         if (cache.size() > capacity) {
             cache.remove(head.key);
-            head = head.next;
-            head.prev = null;
+            removeNode(head);
         }
     }
-    
+
     class Node {
         int key, val;
-        Node prev;
-        Node next;
-        
+        Node prev, next;
+
         public Node(int key, int val) {
             this.key = key;
             this.val = val;
