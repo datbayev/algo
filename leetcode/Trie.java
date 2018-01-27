@@ -83,7 +83,6 @@ public class Trie {
 
         public Node() {
             this.isRoot = true;
-            this.c = 'X';
         }
 
         public void setAsEnd() {
