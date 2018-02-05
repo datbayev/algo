@@ -7,10 +7,10 @@ import java.util.*;
 
 class LRUCache {
 
-    Map<Integer, Node> cache;
-    int capacity;
-    Node head;
-    Node tail;
+    private HashMap<Integer, Node> cache;
+    private int capacity;
+    private Node head;
+    private Node tail;
 
     private void moveToTail(Node cur) {
         if (cur.next == null)
@@ -48,7 +48,7 @@ class LRUCache {
     }
 
     public LRUCache(int capacity) {
-        cache = new HashMap(capacity);
+        cache = new HashMap<>(capacity);
         this.capacity = capacity;
     }
 
@@ -80,7 +80,7 @@ class LRUCache {
 
         if (cache.size() > capacity) {
             cache.remove(head.key);
-            removeNode(head);
+            removeNode(head); // remove the least
         }
     }
 
