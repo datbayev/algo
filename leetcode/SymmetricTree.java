@@ -13,22 +13,14 @@ class SymmetricTree {
     }
 
     public boolean isSymmetric(TreeNode root) {
-        if (root == null)
-            return true;
-        
-        return rec(root.left, root.right);
+        return root == null || rec(root.left, root.right);
     }
     
     public boolean rec(TreeNode left, TreeNode right) {
         if (left == null && right == null)
             return true;
-        
-        if ((left == null && right != null) || (left != null && right == null))
-            return false;
-        
-        if (left.val != right.val)
-            return false;
-        
-        return rec(left.left, right.right) && rec(left.right, right.left);
+
+        return left != null && right != null && left.val == right.val &&
+                rec(left.left, right.right) && rec(left.right, right.left);
     }
 }
