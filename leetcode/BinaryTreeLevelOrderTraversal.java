@@ -13,36 +13,24 @@ class BinaryTreeLevelOrderTraversal {
         TreeNode(int x) { val = x; }
     }
 
-    Map<Integer, List<Integer>> map;
-    int maxLevel = 0;
-    
     public List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> result = new ArrayList();
+        List<List<Integer>> result = new ArrayList<>();
         
-        map = new HashMap();
-        traverse(root, 0);
-        
-        if (root == null)
-            return result;
-        
-        for (int i = 0; i <= maxLevel; i++)
-            result.add(map.get(i));
+        traverse(root, 0, result);
         
         return result;
     }
     
-    public void traverse(TreeNode node, int level) {
+    private void traverse(TreeNode node, int level, List<List<Integer>> res) {
         if (node == null)
             return;
+
+        if (res.size() == level)
+            res.add(new ArrayList<>());
+
+        res.get(level).add(node.val);
         
-        if (!map.containsKey(level))
-            map.put(level, new ArrayList());
-        
-        map.get(level).add(node.val);
-        
-        maxLevel = Math.max(maxLevel, level);
-        
-        traverse(node.left, level + 1);
-        traverse(node.right, level + 1);
+        traverse(node.left, level + 1, res);
+        traverse(node.right, level + 1, res);
     }
 }
