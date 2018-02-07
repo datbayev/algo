@@ -6,38 +6,31 @@ package leetcode;
 import java.util.*;
 
 class BestMeetingPoint {
-    List<Point> points;
-    
     public int minTotalDistance(int[][] grid) {
-        points = new ArrayList();
-        
-        int n = grid.length;
-        int m = grid[0].length;
-        
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < m; j++)
-                if (grid[i][j] == 1)
-                    points.add(new Point(i, j));
-        
-        int min = Integer.MAX_VALUE;
-        
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < m; j++) {
-                int cur = 0;
-                for (Point p : points)
-                    cur += Math.abs(p.x - i) + Math.abs(p.y - j);
+        List<Integer> row = new ArrayList<>();
+        List<Integer> col = new ArrayList<>();
 
-                min = Math.min(cur, min);
-            }
-        
-        return min;
+        int rows = grid.length, cols = grid[0].length;
+
+        for (int i = 0; i < rows; i++)
+            for (int j = 0; j < cols; j++)
+                if (grid[i][j] == 1)
+                    row.add(i);
+
+        for (int j = 0; j < cols; j++)
+            for (int i = 0; i < rows; i++)
+                if (grid[i][j] == 1)
+                    col.add(j);
+
+        return dist(col) + dist(row);
     }
-    
-    class Point {
-        int x, y;
-        public Point(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
+
+    private int dist(List<Integer> list) {
+        int i = 0, j = list.size() - 1, res = 0;
+
+        while (i < j)
+            res += list.get(j--) - list.get(i++);
+
+        return res;
     }
 }
