@@ -7,24 +7,29 @@ import java.util.*;
 
 public class MaximumSizeSubarraySumEqualsK {
     public int maxSubArrayLen(int[] nums, int k) {
-        if (nums.length == 0)
+        int n = nums.length, max = Integer.MIN_VALUE;
+
+        if (n == 0)
             return 0;
 
-        int sum = 0, max = 0;
-        Map<Integer, Integer> map = new HashMap();
-        map.put(0, -1);
+        int[] sums = new int[n];
+        sums[0] = nums[0];
 
-        for (int i = 0; i < nums.length; i++) {
-            sum += nums[i];
+        Map<Integer, Integer> map = new HashMap<>(); // sum -> index
+        map.put(0, 0);
 
-            if (map.containsKey(sum - k))
-                max = Math.max(max, i - map.get(sum - k));
+        for (int i = 1; i < n; i++)
+            sums[i] = sums[i - 1] + nums[i];
 
-            if (!map.containsKey(sum))
-                map.put(sum, i);
+        for (int i = 0; i < n; i++) {
+            if (map.containsKey(sums[i] - k))
+                max = Math.max(max, i + 1 - map.get(sums[i] - k));
+
+            if (!map.containsKey(sums[i]))
+                map.put(sums[i], i + 1);
         }
 
-        return max;
+        return max == Integer.MIN_VALUE ? 0 : max;
     }
 
     public int maxSubArrayLenBruteForce(int[] nums, int k) {
