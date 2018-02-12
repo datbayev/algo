@@ -73,4 +73,46 @@ public class OneAwayTest {
         String str2 = "ab";
         assertEquals(false, isOneAway(str1, str2));
     }
+
+    @Test
+    public void test11() {
+        String str1 = "cat";
+        String str2 = "dog";
+        assertEquals(false, isOneAway(str1, str2));
+    }
+
+    @Test
+    public void test12() {
+        String str1 = "cat";
+        String str2 = "cats";
+        assertEquals(true, isOneAway(str1, str2));
+    }
+
+    @Test
+    public void test13() {
+        String str1 = "cat";
+        String str2 = "cut";
+        assertEquals(true, isOneAway(str1, str2));
+    }
+
+    @Test
+    public void test14() {
+        String str1 = "cat";
+        String str2 = "cast";
+        assertEquals(true, isOneAway(str1, str2));
+    }
+
+    @Test
+    public void test15() {
+        String str1 = "cat";
+        String str2 = "at";
+        assertEquals(true, isOneAway(str1, str2));
+    }
+
+    @Test
+    public void test16() {
+        String str1 = "cat";
+        String str2 = "act";
+        assertEquals(false, isOneAway(str1, str2));
+    }
 }
