@@ -9,6 +9,40 @@ public class OneAway {
         if (Math.abs(str1.length() - str2.length()) > 1)
             return false;
 
+        if (str1.length() > str2.length()) {
+            String temp = str1;
+            str1 = str2;
+            str2 = temp;
+        }
+
+        boolean different = false;
+        int i = 0, j = 0;
+
+        while (i < str1.length() && j < str2.length()) {
+            if (str1.charAt(i) != str2.charAt(j)) {
+
+                if (different)
+                    return false;
+
+                different = true;
+
+                if (str2.length() > str1.length()) {
+                    j++;
+                    continue;
+                }
+            }
+
+            i++;
+            j++;
+        }
+
+        return different || str1.length() != str2.length();
+    }
+
+    public static boolean isOneAwayRecursive(String str1, String str2) {
+        if (Math.abs(str1.length() - str2.length()) > 1)
+            return false;
+
         return compare(str1, str2, 0, 0, 1, 0);
     }
 
