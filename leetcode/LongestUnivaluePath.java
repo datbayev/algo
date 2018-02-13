@@ -7,29 +7,26 @@ public class LongestUnivaluePath {
     int max = 0;
 
     public int longestUnivaluePath(TreeNode root) {
-        maxPath(root);
+        rec(root);
         return max;
     }
 
-    public int maxPath(TreeNode node) {
-        if (node == null)
+    private int rec(TreeNode root) {
+        if (root == null)
             return 0;
 
-        int left = 0;
-        if (node.left != null && node.left.val == node.val)
-            left += maxPath(node.left) + 1;
-        else
-            maxPath(node.left);
+        int right = rec(root.right), left = rec(root.left);
+        int arrowLeft = 0, arrowRight = 0;
 
-        int right = 0;
-        if (node.right != null && node.right.val == node.val)
-            right += maxPath(node.right) + 1;
-        else
-            maxPath(node.right);
+        if (root.left != null && root.left.val == root.val)
+            arrowLeft = left + 1; // left node itself and everything attached to it
 
-        max = Math.max(max, left + right);
+        if (root.right != null && root.right.val == root.val)
+            arrowRight = right + 1; // right node itself and everything attached to it
 
-        return Math.max(left, right);
+        max = Math.max(max, arrowLeft + arrowRight);
+
+        return Math.max(arrowLeft, arrowRight);
     }
 
     public class TreeNode {
