@@ -14,14 +14,14 @@ public class DesignCompressedStringIterator {
         while (i < s.length()) {
             char c = s.charAt(i);
             int j = i + 1;
-            String countStr = "";
+            StringBuilder countStr = new StringBuilder();
 
             while (j < s.length() && s.charAt(j) >= '0' && s.charAt(j) <= '9') {
-                countStr += s.charAt(j);
+                countStr.append(s.charAt(j));
                 j++;
             }
 
-            int count = Integer.parseInt(countStr);
+            int count = Integer.parseInt(countStr.toString());
 
             q.add(new Item(c, count));
 
