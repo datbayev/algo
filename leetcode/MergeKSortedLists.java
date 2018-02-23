@@ -3,6 +3,8 @@ package leetcode;
 // https://leetcode.com/problems/merge-k-sorted-lists/description/
 // 23. Merge k Sorted Lists
 
+import java.util.*;
+
 class MergeKSortedLists {
     class ListNode {
         int val;
@@ -43,5 +45,49 @@ class MergeKSortedLists {
         }
         
         return lists[0];
+    }
+
+    public ListNode mergeKListsHeaps(ListNode[] lists) {
+        if (lists.length == 0)
+            return null;
+
+        PriorityQueue<Item> pq = new PriorityQueue<>(lists.length, (o1, o2) -> Integer.compare(o1.val, o2.val));
+
+        for (int i = 0; i < lists.length; i++)
+            if (lists[i] != null)
+                pq.add(new Item(lists[i].val, i));
+
+        ListNode root = null;
+        ListNode node = null;
+
+        while (!pq.isEmpty()) {
+            Item cur = pq.poll();
+            ListNode next = new ListNode(lists[cur.idx].val);
+
+            if (root == null) {
+                root = next;
+                node = root;
+            } else {
+                node.next = next;
+                node = node.next;
+            }
+
+            lists[cur.idx] = lists[cur.idx].next;
+
+            if (lists[cur.idx] != null)
+                pq.add(new Item(lists[cur.idx].val, cur.idx));
+        }
+
+        return root;
+    }
+
+    class Item {
+        int val;
+        int idx;
+
+        Item(int val, int idx) {
+            this.val = val;
+            this.idx = idx;
+        }
     }
 }
