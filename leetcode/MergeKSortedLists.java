@@ -10,47 +10,20 @@ class MergeKSortedLists {
         ListNode(int x) { val = x; }
     }
 
-    public ListNode merge(int count, ListNode h1, ListNode h2) {
-        if (h1 == null)
-            return h2;
-        
-        if (h2 == null)
-            return h1;
-        
-        ListNode res = null;
-        ListNode cur = null;
-        
-        while (h1 != null && h2 != null) {
-            if (h1.val < h2.val) {
-                if (res == null) {
-                    res = h1;
-                    cur = res;
-                } else {
-                    cur.next = h1;
-                    cur = cur.next;
-                }
+    private ListNode merge(ListNode l1, ListNode l2) {
+        if (l1 == null)
+            return l2;
 
-                h1 = h1.next;
-            } else {
-                if (res == null) {
-                    res = h2;
-                    cur = res;
-                } else {
-                    cur.next = h2;
-                    cur = cur.next;
-                }
+        if (l2 == null)
+            return l1;
 
-                h2 = h2.next;
-            }
+        if (l1.val < l2.val) {
+            l1.next = merge(l1.next, l2);
+            return l1;
+        } else {
+            l2.next = merge(l1, l2.next);
+            return l2;
         }
-        
-        if (h1 == null)
-            cur.next = h2;
-        
-        if (h2 == null)
-            cur.next = h1;
-        
-        return res;
     }
     
     public ListNode mergeKLists(ListNode[] lists) {
@@ -61,14 +34,11 @@ class MergeKSortedLists {
             return lists[0];
         
         int k = lists.length;
-        int count = 0;
-        ListNode cur = lists[0];
         for (int size = 1; size < k; size *= 2) {
             for (int lo = 0; lo < k - size; lo += 2 * size) {
-                int ind1 = lo;
                 int ind2 = Math.min(k - 1, lo + 2 * size - 1);
-                lists[ind1] = merge(count++, lists[ind1], lists[ind2]);
-                lists[ind2] = lists[ind1];
+                lists[lo] = merge(lists[lo], lists[ind2]);
+                lists[ind2] = lists[lo];
             }
         }
         
