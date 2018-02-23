@@ -5,65 +5,41 @@ package leetcode;
 
 class SearchInRotatedSortedArray {
     public int search(int[] nums, int target) {
-        int n = nums.length;
-        
-        if (n == 0)
+        if (nums.length == 0)
             return -1;
-        
-        if (n == 1)
-            return nums[0] == target ? 0 : -1;
-        
-        if (nums[0] < nums[n - 1])
-            return binSearch(nums, target, 0, n - 1);
-        
-        int left = 0;
-        int right = n - 1;
-        int min = nums[n - 1];
-        int minIndex = n - 1;
-        
+
+        int left = 0, right = nums.length - 1;
         while (left < right) {
-            int m = left + (right - left) / 2;
-            
-            if (min > nums[m]) {
-                min = nums[m];
-                minIndex = m;
+            int mid = left + (right - left) / 2;
+
+            if (nums[mid] == target)
+                return mid;
+
+            if (nums[left] < nums[right]) { // sorted
+                if (target > nums[mid])
+                    left = mid + 1;
+                else
+                    right = mid;
+            } else { // rotated
+                // we need to determine which side is sorted
+                // "left -> mid" or "mid -> right"
+
+                if (nums[left] <= nums[mid]) { // left to mid is sorted
+                    if (target <= nums[mid] && target >= nums[left]) { // lies in left sorted side
+                        right = mid;
+                    } else {
+                        left = mid + 1;
+                    }
+                } else if (nums[mid] < nums[right]) { // right to mid is sorted
+                    if (target >= nums[mid] && target <= nums[right]) { // list in right sorted side
+                        left = mid + 1;
+                    } else {
+                        right = mid;
+                    }
+                }
             }
-            
-            if (nums[m] > nums[n - 1])
-                left = m + 1;
-            else
-                right = m;
         }
-        
-        if (target == nums[minIndex]) // target is the minimum number
-            return minIndex;
-        
-        int searchLeft = 0;
-        int searchRight = n - 1;
-        
-        if (target >= nums[0])
-            searchRight = minIndex;
-        else
-            searchLeft = minIndex;
-        
-        return binSearch(nums, target, searchLeft, searchRight);
-    }
-    
-    public int binSearch(int[] nums, int target, int left, int right) {
-        int l = left, r = right;
-        
-        while (l < r) {
-            int m = l + (r - l) / 2;
-            if (nums[m] > target)
-                r = m;
-            else if (nums[m] < target)
-                l = m + 1;
-            else return m;
-        }
-        
-        if (nums[l] == target)
-            return l;
-        
-        return -1;
+
+        return nums[left] == target ? left : -1;
     }
 }
