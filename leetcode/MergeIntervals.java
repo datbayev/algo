@@ -15,44 +15,27 @@ public class MergeIntervals {
         public String toString() { return String.format("%s %s", start, end); }
     }
 
-    Comparator<Interval> intervalComparator = new Comparator<Interval>() {
-        @Override
-        public int compare(Interval o1, Interval o2) {
-            if (o1.start < o2.start)
-                return -1;
-            else if (o1.start > o2.start)
-                return 1;
-            else { // starts are equal
-                if (o1.end < o2.end)
-                    return -1;
-                else if (o1.end > o2.end)
-                    return 1;
-                else
-                    return 0;
-            }
-        }
-    };
-
     public List<Interval> merge(List<Interval> intervals) {
-        List<Interval> result = new ArrayList<Interval>();
+        if (intervals == null || intervals.size() == 0)
+            return new ArrayList<>();
 
-        Collections.sort(intervals, intervalComparator);
+        List<Interval> res = new ArrayList<>();
+        intervals.sort((a, b) -> a.start != b.start ? Integer.compare(a.start, b.start) : Integer.compare(a.end, b.end));
 
         int i = 0;
         while (i < intervals.size()) {
-            Interval curElem = intervals.get(i);
-            Interval currentInterval = new Interval(curElem.start, curElem.end);
+            int curmax = intervals.get(i).end;
             int j = i + 1;
-            int lastEnd = curElem.end;
-            while (j < intervals.size() && intervals.get(j).start <= lastEnd) {
-                if (lastEnd < intervals.get(j).end)
-                    lastEnd = intervals.get(j).end;
+            while (j < intervals.size() && intervals.get(j).start <= curmax) {
+                curmax = Math.max(curmax, intervals.get(j).end);
                 j++;
             }
-            currentInterval.end = lastEnd;
-            result.add(currentInterval);
+
+            res.add(new Interval(intervals.get(i).start, curmax));
+
             i = j;
         }
-        return result;
+
+        return res;
     }
 }
