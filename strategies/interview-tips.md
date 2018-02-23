@@ -37,9 +37,10 @@ During the coding:
 - write concise and easy to read code
 - DRY: assume you have a function, quickly write it’s signature, and implement it later
 - give variables meaningful names
--
 
+More stuff:
 - are you happy with the solution?
-- UNIT INTEGRATION FUNCTIONAL TEST
-- Communication is very important, make sure you are on the same page with interviewer
+- clearly mention UNIT INTEGRATION FUNCTIONAL TESTS, just said out loud these words so that interviewer sees that you're
+aware of this.
+- communication is very important, make sure you are on the same page with interviewer
 - most of the problems are much simpler that you think they are, don't overthink it
