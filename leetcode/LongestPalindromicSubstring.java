@@ -4,34 +4,37 @@ package leetcode;
 // 5. Longest Palindromic Substring
 
 class LongestPalindromicSubstring {
+    private int start = 0, end = 0, max = 1;
+
     public String longestPalindrome(String s) {
-        int maxlen = 0;
-        String res = "";
-        
-        int n = s.length();
-        
-        for (int i = 0; i < n; i++) {
-            String s1 = find(i, i, s);
-            String s2 = i < n - 1 && s.charAt(i) == s.charAt(i + 1) ? find(i, i + 1, s) : "";
-            
-            if (maxlen < Math.max(s1.length(), s2.length())) {
-                res = s1.length() > s2.length() ? s1 : s2;
-                maxlen = res.length();
-            }
+        if (s.length() < 2)
+            return s;
+
+        for (int i = 0; i < s.length() - 1; i++) {
+            find(i, i, s);
+            find(i, i + 1, s); // for even length
         }
-        
-        return res;
+
+        return s.substring(start, end + 1);
     }
-    
-    public String find(int ind1, int ind2, String s) {
-        int l = ind1, r = ind2;
-        while (l >= 0 && r <= s.length() - 1) {
-            if (s.charAt(l) != s.charAt(r))
-                break;
-            l--;
-            r++;
+
+    private void find(int left, int right, String s) {
+        if (left == right) { // odd length of possible palindrome
+            left--;
+            right++;
         }
-        
-        return s.substring(l + 1, r);
+
+        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+            left--;
+            right++;
+        }
+
+        left++; right--; // rollback last iteration
+
+        if (right - left + 1 > max) {
+            max = right - left + 1;
+            start = left;
+            end = right;
+        }
     }
 }
