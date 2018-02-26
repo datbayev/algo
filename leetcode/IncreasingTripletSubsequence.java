@@ -8,7 +8,7 @@ public class IncreasingTripletSubsequence {
         if (nums.length < 3)
             return false;
 
-        int min0 = nums[0];
+        int min0 = Integer.MAX_VALUE;
         int min1 = Integer.MAX_VALUE;
 
         for (int num : nums) {
