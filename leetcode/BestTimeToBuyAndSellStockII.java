@@ -4,39 +4,14 @@ package leetcode;
 // 122. Best Time to Buy and Sell Stock II
 
 class BestTimeToBuyAndSellStockII {
-    int profit;
-    int buyPrice;
-    
+
     public int maxProfit(int[] prices) {
-        int ind = 1;
-        int n = prices.length;
-        
-        while (ind < n) {
-            
-            while (ind < n && prices[ind] <= prices[ind - 1]) {
-                ind++;
-            }
-            
-            if (ind >= n)
-                break;
+        int profit = 0;
 
-            buy(prices, ind - 1);
+        for (int i = 1; i < prices.length; i++)
+            if (prices[i] > prices[i - 1])
+                profit += prices[i] - prices[i - 1];
 
-            while (ind < n && prices[ind] >= prices[ind - 1]) {
-                ind++;
-            }
-
-            sell(prices, ind - 1);
-        }
-        
         return profit;
-    }
-    
-    public void buy(int[] prices, int ind) {
-        buyPrice = prices[ind];
-    }
-    
-    public void sell(int[] prices, int ind) {
-        profit += prices[ind] - buyPrice;
     }
 }

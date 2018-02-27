@@ -14,9 +14,7 @@ class BestTimeToBuyAndSellStockIII {
         int lastMin = prices[0];
         
         for (int i = 1; i < prices.length; i++) {
-            int leftMin = Integer.MAX_VALUE;
-            
-            leftMin = Math.min(lastMin, prices[i - 1]);
+            int leftMin = Math.min(lastMin, prices[i - 1]);
             lastMin = leftMin;
             
             int rightMax = findMaxProfit(prices, i + 1, n - 1);
@@ -30,7 +28,7 @@ class BestTimeToBuyAndSellStockIII {
         return max > 0 ? max : 0;
     }
     
-    public int findMaxProfit(int[] prices, int left, int right) {
+    private int findMaxProfit(int[] prices, int left, int right) {
         int minimum = Integer.MAX_VALUE;
         int maxProfit = 0;
         

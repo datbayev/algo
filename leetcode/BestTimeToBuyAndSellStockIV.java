@@ -11,6 +11,7 @@ class BestTimeToBuyAndSellStockIV {
             return 0;
         
         if (k >= n / 2) {
+            // simply any amount of buy/sell
             int maxProfit = 0;
             for (int i = 1; i < n; i++) 
                 if (prices[i] > prices[i - 1])
@@ -24,11 +25,11 @@ class BestTimeToBuyAndSellStockIV {
         
         for (int i = 0; i <= k; i++)
             balance[i] = Integer.MIN_VALUE;
-        
-        for (int i = 0; i < n; i++) {
+
+        for (int price : prices) {
             for (int j = 1; j <= k; j++) {
-                balance[j] = Math.max(balance[j], profit[j - 1] - prices[i]); // buy current stock
-                profit[j] = Math.max(profit[j], balance[j] + prices[i]); // sell current stock
+                balance[j] = Math.max(balance[j], profit[j - 1] - price); // buy current stock
+                profit[j] = Math.max(profit[j], balance[j] + price); // sell current stock
             }
         }
         
