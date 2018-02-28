@@ -33,24 +33,23 @@ Before start coding:
 - once you find optimal algorithm go for coding
 
 During the coding:
-- think out loud, with this you'll show the path of your thoughts.
-- dominate the discussion, keep asking, talking, suggest ideas, the more the better, don't stop thinking and keep
+- **think out loud**, with this you'll show the path of your thoughts.
+- **dominate the discussion**, keep asking, talking, suggest ideas, the more the better, don't stop thinking and keep
 driving the interview.
-- details are important, interviewers pay attention to small details which you're going through during your thinking or
+- **details are important**, interviewers pay attention to small details which you're going through during your thinking or
 implementation. For instance, why would you prefer BFS over DFS instead just choosing one.
-- give "insights" of the problem, if you catch some corner cases or some other interesting cases which could affect your
+- **give "insights" of the problem**, if you catch some corner cases or some other interesting cases which could affect your
 solution, talk about them, show your knowledge, the whole interview is an opportunity to shine, use every possible
 chance
-- write concise and easy to read code, try to make nice with proper indentations
+- **write concise and easy to read code**, try to make nice with proper indentations
 - in some cases you might want to assume that you have a function, quickly write it’s signature, and implement it later
 - give variables meaningful names, but don't spend much time on this thinking about perfect name, it's good to have it,
 but not necessarily a must.
 - once you have at least one working solution ask if interviewer is happy with the solution
-- clearly mention in real-world you would write a bunch of unit/integration/functional tests, just said out loud these
+- clearly mention in real-world you would write a bunch of **unit/integration/functional tests**, just said out loud these
 words so that interviewer sees that you're aware of this. There's no other way during interview to show that you know
 something about testing other than just talking about it.
-- communication is crucial, make sure you are on the same page with interviewer. If you're unsure about something, don't
+- **communication is crucial**, make sure you are on the same page with interviewer. If you're unsure about something, don't
 be shy/afraid to ask for clarifying that points. It's better to double-check rather than solving wrong problem.
 - most of the interview problems are much simpler than you think they are, don't overthink them. Start simple, then keep
 optimizing and deepening into whatever you have already.
-
