@@ -7,6 +7,25 @@ import java.util.ArrayDeque;
 
 public class LongestSubstringWithAtMostKDistinctCharacters {
     public int lengthOfLongestSubstringKDistinct(String s, int k) {
+        int left = 0, right = 0, uniq = 0, max = 0;
+        int[] counter = new int[128];
+
+        while (right < s.length()) {
+            if (counter[s.charAt(right++)]++ == 0) {
+                uniq++;
+
+                while (uniq > k)
+                    if (counter[s.charAt(left++)]-- == 1)
+                        uniq--;
+            }
+
+            max = Math.max(max, right - left);
+        }
+
+        return max;
+    }
+
+    public int lengthOfLongestSubstringKDistinctBinarySearch(String s, int k) {
         if (k > s.length())
             return s.length();
 
