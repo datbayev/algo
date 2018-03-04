@@ -5,44 +5,35 @@ package leetcode;
 
 public class OneEditDistance {
     public boolean isOneEditDistance(String str1, String str2) {
-        if (str1.equals(str2))
-            return false;
-
         if (Math.abs(str1.length() - str2.length()) > 1)
             return false;
 
-        if (str1.length() == 1 && str1.equals(str2))
-            return false;
-
+        // let str2 be longer than str1
         if (str1.length() > str2.length()) {
             String temp = str1;
             str1 = str2;
             str2 = temp;
         }
 
-        int ind1 = 0, ind2 = 0;
-        boolean diff = false;
+        int i = 0, j = 0;
+        boolean used = false;
+        int diff = Math.abs(str1.length() - str2.length());
 
-        while (ind1 < str1.length() && ind2 < str2.length()) {
-            char c1 = str1.charAt(ind1);
-            char c2 = str2.charAt(ind2);
-
-            if (c1 == c2) {
-                ind1++;
-                ind2++;
+        while (i < str1.length() && j < str2.length()) {
+            if (str1.charAt(i) == str2.charAt(j)) {
+                i++;
+                j++;
             } else {
-                if (diff)
+                if (used)
                     return false;
-                diff = true;
-                if (str1.length() < str2.length())
-                    ind2++;
-                else {
-                    ind1++;
-                    ind2++;
-                }
+
+                used = true;
+                if (diff == 0)
+                    i++;
+                j++;
             }
         }
 
-        return true;
+        return used || diff > 0;
     }
 }
