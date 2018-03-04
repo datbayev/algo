@@ -54,9 +54,8 @@ public class EvaluateDivision {
             List<Edge> list = g.get(cur); // list of current connections
             for (Edge edge : list) {
 
-                if (used.contains(edge.v)) {
+                if (used.contains(edge.v))
                     continue;
-                }
 
                 double ratio = map.get(cur) * edge.val;
 
