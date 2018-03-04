@@ -1,3 +1,5 @@
+package leetcode;
+
 // https://leetcode.com/problems/partition-to-k-equal-sum-subsets/description/
 // 698. Partition to K Equal Sum Subsets
 
@@ -6,8 +8,8 @@ class PartitionToKEqualSumSubsets {
         int n = nums.length;
         
         int sum = 0;
-        for (int i = 0; i < n; i++)
-            sum += nums[i];
+        for (int num : nums)
+            sum += num;
         
         if (sum % k > 0)
             return false;
@@ -19,7 +21,7 @@ class PartitionToKEqualSumSubsets {
         return dfs(nums, 0, target, 0, visited, k);
     }
     
-    public boolean dfs(int[] nums, int index, int target, int sum, boolean[] visited, int k) {
+    private boolean dfs(int[] nums, int index, int target, int sum, boolean[] visited, int k) {
         if (k == 1) // one last bucket with rest of the numbers
             return true;
         

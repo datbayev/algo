@@ -13,8 +13,8 @@ class PartitionEqualSubsetSum {
         int n = nums.length;
         
         int sum = 0;
-        for (int i = 0; i < n; i++)
-            sum += nums[i];
+        for (int num : nums)
+            sum += num;
         
         if (sum % 2 == 1)
             return false;
@@ -37,12 +37,11 @@ class PartitionEqualSubsetSum {
         return false;
     }
     
-    public boolean dpSingleArray(int[] nums) {
+    private boolean dpSingleArray(int[] nums) {
         int n = nums.length;
         
         int sum = 0;
-        for (int i = 0; i < n; i++)
-            sum += nums[i];
+        for (int num : nums) sum += num;
         
         if (sum % 2 == 1)
             return false;
@@ -52,10 +51,10 @@ class PartitionEqualSubsetSum {
         int target = sum / 2;
         
         dp[0] = true;
-        
-        for (int i = 0; i < n; i++)
-            for (int j = target; j >= nums[i]; j--)
-                dp[j] = dp[j] || dp[j - nums[i]];
+
+        for (int num : nums)
+            for (int j = target; j >= num; j--)
+                dp[j] = dp[j] || dp[j - num];
         
         return dp[target];
     }
