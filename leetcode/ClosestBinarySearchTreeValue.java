@@ -6,7 +6,7 @@ package leetcode;
 public class ClosestBinarySearchTreeValue {
     double EPS = 1e-7;
     int min = Integer.MAX_VALUE;
-    double minDiff = Double.MAX_VALUE;
+    private double minDiff = Double.MAX_VALUE;
 
     public int closestValue(TreeNode root, double target) {
         rec(root, target);
