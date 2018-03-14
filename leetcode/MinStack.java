@@ -6,37 +6,34 @@ package leetcode;
 import java.util.Stack;
 
 class MinStack {
-    
-    Stack<Integer> stack;
-    int min;
-    
+
+    private Stack<Integer> stack;
+    private Stack<Integer> minStack;
+
     /** initialize your data structure here. */
     public MinStack() {
-        stack = new Stack();
-        min = Integer.MAX_VALUE;
+        minStack = new Stack<>();
+        stack = new Stack<>();
     }
-    
+
     public void push(int x) {
-        if (x <= min) {
-            stack.push(min);
-            min = x;
-        }
-        
         stack.push(x);
+        if (minStack.isEmpty() || x <= minStack.peek())
+            minStack.push(x);
     }
-    
+
     public void pop() {
-        if (stack.pop() == min) {
-            min = stack.pop();
-        }
+        if (minStack.peek().equals(stack.peek()))
+            minStack.pop();
+        stack.pop();
     }
-    
+
     public int top() {
         return stack.peek();
     }
-    
+
     public int getMin() {
-        return min;
+        return minStack.peek();
     }
 }
 
