@@ -3,34 +3,49 @@ package leetcode;
 // https://leetcode.com/problems/minimum-window-subsequence/description/
 // 727. Minimum Window Subsequence
 
+import java.util.*;
+
 public class MinimumWindowSubsequence {
     public String minWindow(String s, String t) {
-        boolean[][] d = new boolean[t.length()][s.length()];
-        for (int i = 0; i < t.length(); i++)
-            for (int j = 0; j < s.length(); j++)
-                if (t.charAt(i) == s.charAt(j))
-                    d[i][j] = true;
+        if (t.length() == 1)
+            return s.contains(t) ? t : "";
 
-        int i = 0, j = 0, jj = 0, min = Integer.MAX_VALUE, minIndex = -1;
+        Map<Character, TreeSet<Integer>> map = new HashMap<>();
+        int left = 0, right = Integer.MAX_VALUE, n = s.length(), m = t.length();
 
-        while (i < t.length() && j < s.length()) {
-            if (d[i][j]) {
-                i++;
-                j++;
+        for (int i = 0; i < n; i++) {
+            char c = s.charAt(i);
+            if (!map.containsKey(c))
+                map.put(c, new TreeSet<>());
 
-                if (i == t.length()) {
-                    if (min > j - jj) {
-                        min = j - jj;
-                        minIndex = jj;
-                    }
-                    j = jj + 1;
-                    jj++;
-                    i = 0;
+            map.get(c).add(i);
+
+            if (i >= m - 1 && c == t.charAt(m - 1)) {
+                int last = i - 1, j = m - 2;
+
+                while (j >= 0) {
+                    char cur = t.charAt(j);
+
+                    TreeSet<Integer> set = map.get(cur);
+
+                    if (set == null)
+                        break;
+
+                    Integer prev = set.floor(last);
+                    if (prev == null)
+                        break;
+
+                    last = prev - 1;
+                    j--;
                 }
-            } else
-                j++;
+
+                if (j == -1 && (right == Integer.MAX_VALUE || right - left > i - last + 1)) {
+                    left = last + 1;
+                    right = i;
+                }
+            }
         }
 
-        return minIndex == -1 ? "" : s.substring(minIndex, minIndex + min);
+        return right == Integer.MAX_VALUE ? "" : s.substring(left, right + 1);
     }
 }
