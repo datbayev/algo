@@ -3,32 +3,49 @@ package leetcode;
 // https://leetcode.com/problems/valid-sudoku
 // 36. Valid Sudoku
 
-import java.io.*;
-import java.util.*;
+import java.io.PrintWriter;
 
 public class ValidSudoku {
     public boolean isValidSudoku(char[][] board) {
+        return validateColsAndRows(board) && validateSquares(board);
+    }
+
+    private boolean validateColsAndRows(char[][] board) {
         for (int i = 0; i < board.length; i++) {
-            Set<Character> rowSet = new HashSet<Character>();
-            Set<Character> colSet = new HashSet<Character>();
-            Set<Character> sqrSet = new HashSet<Character>();
+            int[] countRows = new int[10];
+            int[] countCols = new int[10];
 
             for (int j = 0; j < board[0].length; j++) {
-                // check in rows
-                if (board[i][j] != '.' && rowSet.contains(board[i][j]))
-                    return false;
-                rowSet.add(board[i][j]);
+                if (board[i][j] != '.') {
+                    if (countRows[board[i][j] - '0'] > 0)
+                        return false;
 
-                // check in columns
-                if (board[j][i] != '.' && colSet.contains(board[j][i]))
-                    return false;
-                colSet.add(board[j][i]);
+                    countRows[board[i][j] - '0']++;
+                }
 
-                int ii = 3 * (i / 3) + j % 3;
-                int jj = 3 * (i % 3) + j % 3;
-                if (board[ii][jj] != '.' && sqrSet.contains(board[ii][jj]))
-                    return false;
-                sqrSet.add(board[ii][jj]);
+                if (board[j][i] != '.') {
+                    if (countCols[board[j][i] - '0'] > 0)
+                        return false;
+
+                    countCols[board[j][i] - '0']++;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    private boolean validateSquares(char[][] board) {
+        for (int i = 0; i < board.length; i++) {
+            int[] count = new int[10];
+            for (int j = 0; j < board[0].length; j++) {
+                int ii = (i / 3) * 3 + j / 3;
+                int jj = (i % 3) * 3 + j % 3;
+                if (board[ii][jj] != '.') {
+                    if (count[board[ii][jj] - '0'] > 0)
+                        return false;
+                    count[board[ii][jj] - '0']++;
+                }
             }
         }
 
