@@ -11,33 +11,31 @@ class KthSmallestElementInBST {
         TreeNode(int x) { val = x; }
     }
 
-    int answer, count, k;
-    boolean found;
-    
+    int count = 0;
+    int res;
+    boolean found = false;
+
     public int kthSmallest(TreeNode root, int k) {
-        found = false;
-        answer = root.val;
-        count = 0;
-        this.k = k;
-        
-        rec(root);
-        
-        return answer;
+        res = root.val;
+        rec(root, k);
+        return res;
     }
-    
-    public void rec(TreeNode v) {
-        if (v == null || found)
+
+    private void rec(TreeNode node, int k) {
+        if (node == null)
             return;
-        
-        rec(v.left);
-        count++;
-        
-        if (count == k) {
-            answer = v.val;
+
+        rec(node.left, k);
+
+        if (found)
+            return;
+
+        if (++count == k) {
+            res = node.val;
             found = true;
             return;
         }
-        
-        rec(v.right);
+
+        rec(node.right, k);
     }
 }
