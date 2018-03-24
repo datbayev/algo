@@ -5,34 +5,35 @@ package leetcode;
 
 class AddBinary {
     public String addBinary(String a, String b) {
-        if (a.length() > b.length()) { // let "a" be shorter than "b"
+        // let a be longer
+        if (a.length() < b.length()) {
             String temp = a;
             a = b;
             b = temp;
         }
-        
-        String temp = "";
-        for (int i = 0; i < b.length() - a.length(); i++)
-            temp += "0";
-        
-        a = temp + a; // fill forward zeroes to match length of "b"
-        
-        int extra = 0;
-        String res = "";
-        
-        for (int i = a.length() - 1; i >= 0; i--) {
-            char c1 = a.charAt(i);
-            char c2 = b.charAt(i);
-            
-            int cur = (c1 - '0') + (c2 - '0') + extra;
-            
-            extra = cur / 2;
-            res = (cur % 2) + res;
+
+        StringBuilder res = new StringBuilder();
+        int carry = 0;
+        for (int i = b.length() - 1, j = a.length() - 1; i >= 0 && j >= 0; i--, j--) {
+            int c1 = b.charAt(i) - '0';
+            int c2 = a.charAt(j) - '0';
+            int total = c1 + c2 + carry;
+            res.append(total % 2);
+            carry = total / 2;
         }
-        
-        if (extra > 0)
-            res = "1" + res;
-        
-        return res;
+
+        for (int i = a.length() - b.length() - 1; i >= 0; i--) {
+            int c1 = a.charAt(i) - '0';
+            int total = c1 + carry;
+            res.append(total % 2);
+            carry = total / 2;
+        }
+
+        if (carry > 0)
+            res.append(1);
+
+        res.reverse();
+
+        return res.toString();
     }
 }
