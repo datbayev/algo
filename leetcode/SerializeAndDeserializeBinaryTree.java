@@ -10,23 +10,19 @@ public class SerializeAndDeserializeBinaryTree {
 
         // Encodes a tree to a single string.
         public String serialize(TreeNode root) {
-            if (root == null)
-                return "";
-
             StringBuilder res = new StringBuilder();
-            ArrayDeque<TreeNode> q = new ArrayDeque<>();
+            Queue<TreeNode> q = new LinkedList(); // simple queue implementation
             q.add(root);
-            res.append(root.val).append(";");
 
             while (!q.isEmpty()) {
-                TreeNode cur = q.pollFirst();
-                res.append(String.format("%s;%s;", (cur.left != null ? cur.left.val : "null"), (cur.right != null ? cur.right.val : "null")));
+                TreeNode cur = q.poll();
+                res.append((cur == null ? "null" : cur.val) + ",");
 
-                if (cur.left != null)
-                    q.add(cur.left);
+                if (cur == null)
+                    continue;
 
-                if (cur.right != null)
-                    q.add(cur.right);
+                q.add(cur.left);
+                q.add(cur.right);
             }
 
             res.deleteCharAt(res.length() - 1);
@@ -35,35 +31,35 @@ public class SerializeAndDeserializeBinaryTree {
 
         // Decodes your encoded data to tree.
         public TreeNode deserialize(String data) {
-            if (data.equals(""))
-                return null;
+            int left = 0, right = 1;
+            String[] nodes = data.split(",");
+            TreeNode[] list = new TreeNode[nodes.length];
 
-            String[] nodes = data.split(";");
-            int child = 0;
+            while (left < nodes.length) {
+                while (left < nodes.length && nodes[left].equals("null"))
+                    left++;
 
-            TreeNode root = new TreeNode(Integer.parseInt(nodes[0]));
-            ArrayDeque<TreeNode> q = new ArrayDeque<>();
-            q.add(root);
+                if (left == nodes.length)
+                    break;
 
-            while (!q.isEmpty()) {
-                TreeNode node = q.pollFirst();
+                if (list[left] == null)
+                    list[left] = new TreeNode(Integer.parseInt(nodes[left]));
 
-                child++;
-                if (child < nodes.length && !nodes[child].equals("null")) {
-                    TreeNode left = new TreeNode(Integer.parseInt(nodes[child]));
-                    node.left = left;
-                    q.add(left);
+                if (!nodes[right].equals("null")) {
+                    list[right] = new TreeNode(Integer.parseInt(nodes[right]));
+                    list[left].left = list[right];
                 }
 
-                child++;
-                if (child < nodes.length && !nodes[child].equals("null")) {
-                    TreeNode right = new TreeNode(Integer.parseInt(nodes[child]));
-                    node.right = right;
-                    q.add(right);
+                if (!nodes[right + 1].equals("null")) {
+                    list[right + 1] = new TreeNode(Integer.parseInt(nodes[right + 1]));
+                    list[left].right = list[right + 1];
                 }
+
+                right += 2;
+                left++;
             }
 
-            return root;
+            return list[0];
         }
     }
 
