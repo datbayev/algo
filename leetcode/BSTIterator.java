@@ -13,40 +13,45 @@ public class BSTIterator {
         TreeNode(int x) { val = x; }
     }
 
-    int ind;
-    List<Integer> storage;
+    private Stack<TreeNode> stack;
 
     public BSTIterator(TreeNode root) {
-        storage = new ArrayList();
-        ind = 0;
-        initIterator(root);
-    }
-    
-    public void initIterator(TreeNode root) {
+        stack = new Stack<>();
+
         if (root == null)
             return;
-        
-        if (root.left != null)
-            initIterator(root.left);
-        
-        storage.add(root.val);
-        
-        if (root.right != null)
-            initIterator(root.right);
+
+        stack.push(root);
+
+        while (root.left != null) {
+            stack.push(root.left);
+            root = root.left;
+        }
     }
 
     /** @return whether we have a next smallest number */
     public boolean hasNext() {
-        return ind < storage.size();
+        return !stack.isEmpty();
     }
 
     /** @return the next smallest number */
     public int next() {
-        return storage.get(ind++);
+        TreeNode cur = stack.pop();
+        int res = cur.val;
+        if (cur.right != null) {
+            stack.push(cur.right);
+            cur = cur.right;
+            while (cur.left != null) {
+                stack.push(cur.left);
+                cur = cur.left;
+            }
+        }
+
+        return res;
     }
 }
 
-/**
+/*
  * Your BSTIterator will be called like this:
  * BSTIterator i = new BSTIterator(root);
  * while (i.hasNext()) v[f()] = i.next();
