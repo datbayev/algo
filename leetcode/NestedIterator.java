@@ -17,7 +17,7 @@ public class NestedIterator implements Iterator<Integer> {
     Integer index;
 
     public NestedIterator(List<NestedInteger> nestedList) {
-        list = new ArrayList();
+        list = new ArrayList<>();
         index = 0;
         
         if (nestedList.size() == 0)
